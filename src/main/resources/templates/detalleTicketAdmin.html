@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novatronic - Detalle de Ticket NOV-1020</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/admin-style.css"> 
+    <link rel="stylesheet" href="/css/detalle-admin-style.css"> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard">
+                <img src="/img/logo.png" alt="Logo Novatronic Soporte"> 
+                <span class="badge bg-danger ms-2">ADMINISTRADOR</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAdmin" 
+                    aria-controls="navbarNavAdmin" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAdmin">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/dashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/tickets-nuevos">
+                            <i class="bi bi-box-arrow-in-down-right"></i> Tickets Recibidos <span class="badge bg-danger ms-1">4</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/tickets-revisados">
+                            <i class="bi bi-card-checklist"></i> Gestión de Tickets
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/reportes">
+                            <i class="bi bi-graph-up"></i> Reportes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="d-none d-lg-block ms-auto"> 
+                 <a class="btn btn-outline-light btn-logout" href="/login">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                </a>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="main-content container-fluid-custom">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/tickets-revisados">Gestión de Tickets</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalle NOV-1020</li>
+            </ol>
+        </nav>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">
+                <i class="bi bi-headset"></i> Ticket NOV-1020 
+                <span class="badge bg-danger ms-2">ALTA</span>
+                <span class="badge bg-primary ms-2">EN PROCESO</span>
+            </h1>
+            <a href="/admin/tickets-revisados" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Listado
+            </a>
+        </div>
+        
+        <h2 class="h4 mb-4 text-muted">Fallo crítico en el módulo de pagos - **[SISTEMA CAÍDO]**</h2>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="bi bi-file-earmark-text"></i> Descripción Original</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">**Cliente:** Banco Central</p>
+                        <p class="mb-3">**Asunto:** Fallo crítico en el módulo de pagos. El sistema no permite procesar transacciones desde las 17:00 HRS. Esto está impactando la operación diaria.</p>
+                        <p class="small text-muted mb-0">**Origen:** Web del Cliente | **Creado:** 13/10/2025 18:45</p>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="bi bi-chat-dots"></i> Historial y Comunicación (Trazabilidad)</h5>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="timeline-item internal-note">
+                            <p class="small text-muted mb-0">13/10/2025 19:15 | **Sistema Automático**</p>
+                            <p class="mb-1 fw-bold">Clasificación y Asignación:</p>
+                            <div class="alert alert-info py-1 px-2 small d-inline-block">
+                                <i class="bi bi-tag"></i> Clasificado como **Incidente - Infraestructura (DB)**. Prioridad: **Crítica**. Asignado a: **Juan Pérez**.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item client-message">
+                            <p class="small text-muted mb-0">13/10/2025 19:00 | **Cliente (Banco Central)**</p>
+                            <p class="mb-1">"¿Han podido ver nuestro ticket? Es urgente, la paralización sigue afectando nuestros procesos centrales."</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <p class="small text-muted mb-0">13/10/2025 18:55 | **Agente (Juan Pérez)**</p>
+                            <p class="mb-1">"Recibido. Estamos revisando los logs de la base de datos para identificar la causa raíz. Le notifico tan pronto tenga un diagnóstico inicial."</p>
+                        </div>
+
+                        <div class="timeline-item internal-note">
+                            <p class="small text-muted mb-0">13/10/2025 18:50 | **Agente (Juan Pérez)**</p>
+                            <p class="mb-1 fw-bold">Nota Interna:</p>
+                            <p class="mb-0 small fst-italic">El problema parece ser un bloqueo en la tabla X. Necesito verificar con el equipo de DBA si es replicable en el entorno de pruebas.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <p class="small text-muted mb-0">13/10/2025 18:45 | **Sistema**</p>
+                            <p class="mb-0">Ticket Creado.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0"><i class="bi bi-send"></i> Responder / Registrar Comentario</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs mb-3" id="responseTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="public-tab" data-bs-toggle="tab" data-bs-target="#public" type="button" role="tab" aria-controls="public" aria-selected="true">Respuesta al Cliente</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="internal-tab" data-bs-toggle="tab" data-bs-target="#internal" type="button" role="tab" aria-controls="internal" aria-selected="false">Nota Interna</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="public" role="tabpanel" aria-labelledby="public-tab">
+                                <textarea class="form-control mb-2" rows="4" placeholder="Escribe tu respuesta al cliente. Se enviará por correo y se verá en su portal."></textarea>
+                                <button class="btn btn-primary"><i class="bi bi-reply"></i> Enviar Respuesta</button>
+                            </div>
+                            <div class="tab-pane fade" id="internal" role="tabpanel" aria-labelledby="internal-tab">
+                                <textarea class="form-control mb-2" rows="4" placeholder="Escribe una nota interna para el equipo. El cliente NO podrá ver esto."></textarea>
+                                <button class="btn btn-warning text-dark"><i class="bi bi-journal-text"></i> Añadir Nota Interna</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-card">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0"><i class="bi bi-info-circle"></i> Información y Acciones</h5>
+                    </div>
+                    <div class="card-body">
+                        
+                        <h6 class="text-uppercase text-muted border-bottom pb-2 mb-3">SLA y Tiempos</h6>
+                        <ul class="list-group list-group-flush small mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                **Tiempo Límite de Resolución:**
+                                <span class="fw-bold text-danger">30 minutos restantes</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Prioridad (IRP):
+                                <span class="badge bg-danger">CRÍTICA</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Asignado a:
+                                <span class="fw-bold">Juan Pérez</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Categoría (OPD):
+                                <span class="fw-bold">Infraestructura (DB)</span>
+                            </li>
+                        </ul>
+                        
+                        <h6 class="text-uppercase text-muted border-bottom pb-2 mb-3">Acciones de Flujo</h6>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalCerrar">
+                                <i class="bi bi-check-circle-fill"></i> **Cerrar Ticket**
+                            </button>
+                            <button class="btn btn-warning text-dark">
+                                <i class="bi bi-pause-fill"></i> Poner En Espera (Cliente)
+                            </button>
+                            <button class="btn btn-outline-info">
+                                <i class="bi bi-person-plus"></i> Re-asignar
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm mt-2">
+                                <i class="bi bi-x-octagon"></i> Cancelar Ticket
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="modal fade" id="modalCerrar" tabindex="-1" aria-labelledby="modalCerrarLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="modalCerrarLabel"><i class="bi bi-check-circle"></i> Cerrar Ticket NOV-1020</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Confirme la resolución. Un resumen de la solución se enviará al cliente.</p>
+            <div class="mb-3">
+                <label for="resumen" class="form-label fw-bold">Resumen de la Solución (Cierre IRP)</label>
+                <textarea class="form-control" id="resumen" rows="3" placeholder="Detalle las acciones tomadas y la solución final."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mantener Abierto</button>
+            <button type="button" class="btn btn-success">Confirmar Cierre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+            crossorigin="anonymous">
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* Estilos específicos para la tabla de tickets */
+.ticket-table td {
+    vertical-align: middle;
+    font-size: 0.95em;
+}
+.ticket-table .priority-col {
+    width: 100px;
+}
+.ticket-table .action-col {
+    width: 150px;
+}

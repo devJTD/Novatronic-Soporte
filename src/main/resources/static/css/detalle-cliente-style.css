@@ -1,0 +1,131 @@
+/* Estilos de Diseño Base EXTRAÍDOS DEL HTML */
+body { 
+    padding-top: 65px; 
+    background-color: #f8f9fa; 
+}
+.main-content { 
+    padding: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+.navbar-logo { 
+    height: 30px; 
+    width: auto; 
+} 
+
+/* Estilos de Encabezado */
+.priority-badge-lg {
+    font-size: 0.85rem;
+    padding: 0.4em 0.8em;
+}
+.status-badge-lg {
+    font-size: 0.85rem;
+    padding: 0.4em 0.8em;
+}
+
+/* Estilos de Metadatos (Sidebar) */
+.metadata-list .list-group-item {
+    border-bottom: 1px dashed #e9ecef;
+}
+.metadata-list .list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* ------------------------------------------- */
+/* Estilos de Trazabilidad (Timeline)          */
+/* ------------------------------------------- */
+
+.timeline-container {
+    padding-left: 10px; 
+    position: relative;
+}
+
+/* Línea vertical del timeline */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background-color: #dee2e6; 
+}
+
+.timeline-client-item {
+    margin-bottom: 25px;
+    padding-left: 25px; 
+    position: relative;
+}
+
+/* Punto del timeline (círculo) */
+.timeline-client-item::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 17px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #6c757d; 
+    border: 1px solid #dee2e6;
+    z-index: 1;
+}
+
+/* Mensajes del Cliente */
+.timeline-client-item.client-message::before {
+    background-color: #007bff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+/* Mensajes del Agente / Solicitud de Info */
+.timeline-client-item.agent-message::before {
+    background-color: #ffc107;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #ffc107;
+}
+
+/* Eventos del Sistema (Creación/Clasificación) */
+.timeline-client-item.system-event::before {
+    background-color: #adb5bd; 
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #adb5bd;
+}
+
+/* Burbujas de Mensaje */
+.message-bubble {
+    border-radius: 0.5rem;
+    padding: 8px 12px;
+    max-width: 95%; 
+}
+
+.timeline-client-item.client-message .message-bubble {
+    background-color: #e9f7fe !important;
+    border-left: 3px solid #007bff;
+}
+
+.timeline-client-item.agent-message .message-bubble {
+    background-color: #fff3cd !important; 
+    border-left: 3px solid #ffc107;
+}
+
+
+/* ------------------------------------------- */
+/* Estilos de Respuesta del Cliente */
+/* ------------------------------------------- */
+
+.response-card .card-header {
+    border-bottom: none;
+}
+.response-card textarea {
+    resize: vertical;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+}

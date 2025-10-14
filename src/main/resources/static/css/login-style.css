@@ -1,14 +1,10 @@
-/* login-style.css */
-
-/* --- Colores de Marca Sugeridos --- */
-/* Azul Primario de Novatronic (profundo) */
+/* --- 1. Colores de Marca Sugeridos --- */
 :root {
     --novatronic-blue: #00508C; 
     --novatronic-dark-blue: #003366;
 }
 
-/* --- Fondo de Página --- */
-
+/* --- 2. Fondo y Contenedor Principal (Body) --- */
 body {
     background-image: url('/img/fondoLoginNovatronic.jpg'); 
     background-size: cover; 
@@ -17,7 +13,7 @@ body {
     background-attachment: fixed; 
     min-height: 100vh; 
     margin: 0; 
-    font-family: 'Arial', sans-serif; /* Fuente base mejorada */
+    font-family: 'Arial', sans-serif;
 }
 
 .login-container {
@@ -27,30 +23,40 @@ body {
     align-items: center;
 }
 
-/* --- Estilo de la Tarjeta del Formulario --- */
+/* --- 3. Estilo del Logo (Posición Fija) --- */
+.logo-container {
+    position: absolute; 
+    top: 30px; 
+    left: 30px; 
+    z-index: 1000; 
+}
 
+.logo-container img {
+    max-width: 300px; 
+    height: auto;
+}
+
+/* --- 4. Estilo de la Tarjeta del Formulario (login-card) --- */
 .login-card {
     width: 100%;
     max-width: 400px; 
-    padding: 30px; /* Un poco más de padding */
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
-    border-radius: 12px; /* Bordes más suaves */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    padding: 30px; 
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4); 
+    border-radius: 12px; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* --- Estilo del Título --- */
-
+/* --- 5. Estilo del Título --- */
 .login-card .card-title {
-    color: var(--novatronic-blue); /* Título con color de marca */
-    font-weight: 700; /* Negrita */
-    border-bottom: 2px solid var(--novatronic-blue); /* Línea de separación */
+    color: var(--novatronic-blue); 
+    font-weight: 700; 
+    border-bottom: 2px solid var(--novatronic-blue); 
     padding-bottom: 10px;
     margin-bottom: 25px !important;
 }
 
-/* --- Estilo de los Campos de Formulario --- */
-
+/* --- 6. Estilo de los Campos de Formulario --- */
 .form-label {
     font-weight: 600;
     color: #333;
@@ -63,14 +69,13 @@ body {
 }
 
 .form-control:focus {
-    border-color: var(--novatronic-blue); /* Borde de enfoque con color de marca */
-    box-shadow: 0 0 0 0.25rem rgba(0, 80, 140, 0.25); /* Sombra de enfoque azul semi-transparente */
+    border-color: var(--novatronic-blue); 
+    box-shadow: 0 0 0 0.25rem rgba(0, 80, 140, 0.25); 
 }
 
-/* --- Estilo del Botón de Ingreso --- */
-
+/* --- 7. Estilo del Botón de Ingreso --- */
 .btn-primary {
-    background-color: var(--novatronic-blue); /* Color de marca primario */
+    background-color: var(--novatronic-blue); 
     border-color: var(--novatronic-blue);
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -79,34 +84,19 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: var(--novatronic-dark-blue); /* Oscurece al pasar el mouse */
+    background-color: var(--novatronic-dark-blue); 
     border-color: var(--novatronic-dark-blue);
-    transform: translateY(-1px); /* Efecto 3D sutil */
+    transform: translateY(-1px); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Enlace Olvidé Contraseña --- */
-
+/* --- 8. Enlace Olvidé Contraseña y Acceso --- */
 .text-center a {
-    color: #555; /* Un gris oscuro */
+    color: #555; 
     font-size: 0.9em;
     transition: color 0.2s ease;
 }
 
 .text-center a:hover {
-    color: var(--novatronic-blue); /* Resalta con el color de marca al pasar el mouse */
-}
-
-/* --- Estilo del Logo (Manteniendo la posición) --- */
-
-.logo-container {
-    position: absolute; 
-    top: 30px; 
-    left: 30px; 
-    z-index: 1000; 
-}
-
-.logo-container img {
-    max-width: 300px; 
-    height: auto;
+    color: var(--novatronic-blue); 
 }
