@@ -1,3 +1,4 @@
+// AdminController.java
 package com.novatronic.soporte.Controller;
 
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,6 @@ public class AdminController {
         return "dashboardAdmin";
     }
 
-    @GetMapping("/tickets-nuevos")
-    public String obtenerTicketsNuevos(Model modelo) {
-        return "ticketsAdmin";
-    }
-
     @GetMapping("/tickets-revisados")
     public String obtenerTicketsRevisados(Model modelo) {
         return "ticketsRevisadosAdmin";
@@ -27,6 +23,7 @@ public class AdminController {
     
     @GetMapping("/detalles-ticket/{ticketId}")
     public String obtenerDetalleTicketAdmin(@PathVariable String ticketId, Model modelo) {
+        modelo.addAttribute("ticketId", ticketId);
         return "detalleTicketAdmin";
     }
 
@@ -38,5 +35,10 @@ public class AdminController {
     @GetMapping("/reportes")
     public String obtenerReportesAdmin() {
         return "reportesAdmin";
+    }
+    
+    @GetMapping("/base-conocimiento")
+    public String obtenerBaseConocimiento() {
+        return "baseConocimientoAdmin";
     }
 }

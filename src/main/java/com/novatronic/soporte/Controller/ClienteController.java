@@ -1,3 +1,4 @@
+// ClienteController.java
 package com.novatronic.soporte.Controller;
 
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ public class ClienteController {
 
     @GetMapping("/detalle-ticket/{ticketId}")
     public String obtenerDetalleTicketCliente(@PathVariable String ticketId, Model modelo) {
+        modelo.addAttribute("ticketId", ticketId);
         return "detalleTicketCliente";
     }
 }

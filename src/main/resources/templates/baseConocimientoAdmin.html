@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novatronic - Base de Conocimiento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/nova-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard">
+                <img src="/img/logo.png" alt="Novatronic">
+                <span class="badge bg-danger ms-2">ADMIN</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/tickets-revisados"><i class="bi bi-list-check"></i> Gestión Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/reportes"><i class="bi bi-graph-up"></i> Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/base-conocimiento"><i class="bi bi-book"></i> Base Conocimiento</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-white me-3"><i class="bi bi-person-circle"></i> Admin</span>
+                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-4xl font-bold text-white mb-2">
+                    <i class="bi bi-book-fill"></i> Base de Conocimiento (OPD)
+                </h1>
+                <p class="text-glass-muted">Req 18 y 19: Repositorio centralizado de soluciones validadas y estandarizadas</p>
+            </div>
+            <button class="btn btn-nova btn-nova-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalNuevoArticulo">
+                <i class="bi bi-plus-circle"></i> Nuevo Artículo
+            </button>
+        </div>
+
+        <!-- Estadísticas de la Base de Conocimiento -->
+        <div class="row g-4 mb-6">
+            <div class="col-lg-3 col-md-6">
+                <div class="kpi-card-3d">
+                    <div>
+                        <div class="kpi-label mb-2">Total Artículos</div>
+                        <div class="kpi-number">127</div>
+                        <div class="text-sm text-glass-muted">Soluciones documentadas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="kpi-card-3d">
+                    <div>
+                        <div class="kpi-label mb-2">Artículos Vinculados</div>
+                        <div class="kpi-number">89</div>
+                        <div class="text-sm text-glass-muted">Asociados a tickets resueltos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="kpi-card-3d">
+                    <div>
+                        <div class="kpi-label mb-2">Consultas Mes</div>
+                        <div class="kpi-number">1,542</div>
+                        <div class="text-sm text-glass-muted">Búsquedas realizadas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="kpi-card-3d">
+                    <div>
+                        <div class="kpi-label mb-2">Efectividad</div>
+                        <div class="kpi-number">94.2%</div>
+                        <div class="text-sm text-glass-muted">Soluciones aplicadas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscador y Filtros -->
+        <div class="card-glass mb-6">
+            <div class="card-glass-body">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <div class="relative">
+                            <input type="text" class="form-glass w-full pl-12" id="searchKB" placeholder="Buscar en base de conocimiento...">
+                            <i class="bi bi-search absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-glass w-full" id="filterCategoria">
+                            <option value="">Todas las Categorías</option>
+                            <option value="pagos">Módulo Pagos</option>
+                            <option value="reportes">Módulo Reportes</option>
+                            <option value="db">Base de Datos</option>
+                            <option value="seguridad">Seguridad</option>
+                            <option value="integracion">Integración/API</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-glass w-full" id="filterTipo">
+                            <option value="">Todos los Tipos</option>
+                            <option value="solucion">Solución Técnica</option>
+                            <option value="procedimiento">Procedimiento</option>
+                            <option value="guia">Guía de Usuario</option>
+                            <option value="faq">FAQ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-glass w-full" id="filterEstado">
+                            <option value="publicado" selected>Publicados</option>
+                            <option value="borrador">Borradores</option>
+                            <option value="revision">En Revisión</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-nova btn-nova-primary w-full" onclick="buscarArticulos()">
+                            <i class="bi bi-funnel"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículos Destacados -->
+        <div class="row g-4 mb-6">
+            <div class="col-12">
+                <h3 class="text-2xl font-bold text-white mb-4">
+                    <i class="bi bi-star-fill text-warning"></i> Artículos Más Consultados
+                </h3>
+            </div>
+
+            <!-- Artículo 1 -->
+            <div class="col-lg-6">
+                <div class="card-glass hover:shadow-xl transition-all cursor-pointer" onclick="verArticulo('KB-001')">
+                    <div class="card-glass-body">
+                        <div class="flex items-start gap-4">
+                            <div class="p-4 rounded-full" style="background: var(--gradient-danger);">
+                                <i class="bi bi-exclamation-triangle-fill text-3xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="badge-modern badge-critica">CRÍTICO</span>
+                                    <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                        Módulo Pagos
+                                    </span>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">
+                                    KB-001: Reinicio de Servicio MySQL tras Error OOM
+                                </h4>
+                                <p class="text-glass-muted text-sm mb-3">
+                                    Procedimiento paso a paso para reiniciar el servicio MySQL después de un error Out of Memory y prevenir futuras ocurrencias mediante optimización de recursos.
+                                </p>
+                                <div class="flex items-center gap-4 text-xs text-glass-muted">
+                                    <div><i class="bi bi-eye"></i> 234 vistas</div>
+                                    <div><i class="bi bi-link-45deg"></i> 12 tickets vinculados</div>
+                                    <div><i class="bi bi-star-fill text-warning"></i> 4.8/5</div>
+                                    <div><i class="bi bi-calendar3"></i> Actualizado: 10/11/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artículo 2 -->
+            <div class="col-lg-6">
+                <div class="card-glass hover:shadow-xl transition-all cursor-pointer" onclick="verArticulo('KB-015')">
+                    <div class="card-glass-body">
+                        <div class="flex items-start gap-4">
+                            <div class="p-4 rounded-full" style="background: var(--gradient-warning);">
+                                <i class="bi bi-server text-3xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="badge-modern badge-alta">ALTA</span>
+                                    <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                        Base de Datos
+                                    </span>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">
+                                    KB-015: Optimización de Consultas Lentas en Reportes
+                                </h4>
+                                <p class="text-glass-muted text-sm mb-3">
+                                    Guía completa para identificar y optimizar queries lentas en el módulo de reportes. Incluye análisis de índices, reescritura de consultas y configuración de caché.
+                                </p>
+                                <div class="flex items-center gap-4 text-xs text-glass-muted">
+                                    <div><i class="bi bi-eye"></i> 189 vistas</div>
+                                    <div><i class="bi bi-link-45deg"></i> 8 tickets vinculados</div>
+                                    <div><i class="bi bi-star-fill text-warning"></i> 4.6/5</div>
+                                    <div><i class="bi bi-calendar3"></i> Actualizado: 08/11/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artículo 3 -->
+            <div class="col-lg-6">
+                <div class="card-glass hover:shadow-xl transition-all cursor-pointer" onclick="verArticulo('KB-023')">
+                    <div class="card-glass-body">
+                        <div class="flex items-start gap-4">
+                            <div class="p-4 rounded-full" style="background: var(--gradient-info);">
+                                <i class="bi bi-shield-lock-fill text-3xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="badge-modern badge-media">MEDIA</span>
+                                    <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                        Seguridad
+                                    </span>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">
+                                    KB-023: Reseteo de Contraseñas y Recuperación de Acceso
+                                </h4>
+                                <p class="text-glass-muted text-sm mb-3">
+                                    Procedimiento estandarizado para resetear contraseñas de usuarios y gestionar recuperación de accesos bloqueados siguiendo políticas de seguridad.
+                                </p>
+                                <div class="flex items-center gap-4 text-xs text-glass-muted">
+                                    <div><i class="bi bi-eye"></i> 156 vistas</div>
+                                    <div><i class="bi bi-link-45deg"></i> 15 tickets vinculados</div>
+                                    <div><i class="bi bi-star-fill text-warning"></i> 4.9/5</div>
+                                    <div><i class="bi bi-calendar3"></i> Actualizado: 05/11/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artículo 4 -->
+            <div class="col-lg-6">
+                <div class="card-glass hover:shadow-xl transition-all cursor-pointer" onclick="verArticulo('KB-042')">
+                    <div class="card-glass-body">
+                        <div class="flex items-start gap-4">
+                            <div class="p-4 rounded-full" style="background: var(--gradient-success);">
+                                <i class="bi bi-plugin text-3xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="badge-modern badge-media">MEDIA</span>
+                                    <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                        Integración/API
+                                    </span>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">
+                                    KB-042: Configuración de Endpoints API v3
+                                </h4>
+                                <p class="text-glass-muted text-sm mb-3">
+                                    Guía detallada de configuración e integración con la API v3. Incluye autenticación OAuth2, manejo de errores y ejemplos de código en múltiples lenguajes.
+                                </p>
+                                <div class="flex items-center gap-4 text-xs text-glass-muted">
+                                    <div><i class="bi bi-eye"></i> 142 vistas</div>
+                                    <div><i class="bi bi-link-45deg"></i> 6 tickets vinculados</div>
+                                    <div><i class="bi bi-star-fill text-warning"></i> 4.7/5</div>
+                                    <div><i class="bi bi-calendar3"></i> Actualizado: 03/11/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listado Completo -->
+        <div class="card-glass">
+            <div class="card-glass-header">
+                <h3 class="text-xl font-bold mb-0">
+                    <i class="bi bi-list-ul"></i> Todos los Artículos (127)
+                </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-futuristic">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Categoría</th>
+                            <th>Tipo</th>
+                            <th>Vistas</th>
+                            <th>Vinculados</th>
+                            <th>Rating</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong class="text-white">KB-001</strong></td>
+                            <td>Reinicio Servicio MySQL tras OOM</td>
+                            <td><span class="badge-modern" style="background: rgba(239, 68, 68, 0.3);">Pagos</span></td>
+                            <td>Solución Técnica</td>
+                            <td>234</td>
+                            <td>12</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">Publicado</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;" onclick="verArticulo('KB-001')">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">KB-015</strong></td>
+                            <td>Optimización Consultas Lentas Reportes</td>
+                            <td><span class="badge-modern" style="background: rgba(79, 172, 254, 0.3);">Base Datos</span></td>
+                            <td>Guía Técnica</td>
+                            <td>189</td>
+                            <td>8</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">Publicado</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;" onclick="verArticulo('KB-015')">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">KB-023</strong></td>
+                            <td>Reseteo Contraseñas y Recuperación Acceso</td>
+                            <td><span class="badge-modern" style="background: rgba(56, 239, 125, 0.3);">Seguridad</span></td>
+                            <td>Procedimiento</td>
+                            <td>156</td>
+                            <td>15</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">Publicado</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;" onclick="verArticulo('KB-023')">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">KB-042</strong></td>
+                            <td>Configuración Endpoints API v3</td>
+                            <td><span class="badge-modern" style="background: rgba(242, 153, 74, 0.3);">Integración</span></td>
+                            <td>Guía Usuario</td>
+                            <td>142</td>
+                            <td>6</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">Publicado</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;" onclick="verArticulo('KB-042')">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">KB-058</strong></td>
+                            <td>Manejo de Errores Comunes en Módulo Pagos</td>
+                            <td><span class="badge-modern" style="background: rgba(239, 68, 68, 0.3);">Pagos</span></td>
+                            <td>FAQ</td>
+                            <td>98</td>
+                            <td>4</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span>4.5</span>
+                                </div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-warning);">En Revisión</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-nova" style="background: var(--gradient-warning); color: white;" onclick="editarArticulo('KB-058')">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nuevo Artículo -->
+    <div class="modal fade" id="modalNuevoArticulo" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); color: white;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="bi bi-plus-circle text-success"></i> Nuevo Artículo de Base de Conocimiento</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <label class="form-label-glass">Título del Artículo <span class="text-danger">*</span></label>
+                            <input type="text" class="form-glass w-full" placeholder="Ej: Resolución de error 503 en módulo de reportes">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label-glass">ID Automático</label>
+                            <input type="text" class="form-glass w-full" value="KB-128" readonly style="background: rgba(255,255,255,0.05);">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label-glass">Categoría <span class="text-danger">*</span></label>
+                            <select class="form-glass w-full">
+                                <option value="">Seleccione...</option>
+                                <option value="pagos">Módulo Pagos</option>
+                                <option value="reportes">Módulo Reportes</option>
+                                <option value="db">Base de Datos</option>
+                                <option value="seguridad">Seguridad</option>
+                                <option value="integracion">Integración/API</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label-glass">Tipo de Artículo <span class="text-danger">*</span></label>
+                            <select class="form-glass w-full">
+                                <option value="">Seleccione...</option>
+                                <option value="solucion">Solución Técnica</option>
+                                <option value="procedimiento">Procedimiento</option>
+                                <option value="guia">Guía de Usuario</option>
+                                <option value="faq">FAQ</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label-glass">Prioridad</label>
+                            <select class="form-glass w-full">
+                                <option value="critica">Crítica</option>
+                                <option value="alta">Alta</option>
+                                <option value="media" selected>Media</option>
+                                <option value="baja">Baja</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label-glass">Resumen Breve <span class="text-danger">*</span></label>
+                            <textarea class="form-glass w-full" rows="2" placeholder="Descripción corta del artículo (máx. 200 caracteres)"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label-glass">Contenido Completo <span class="text-danger">*</span></label>
+                            <textarea class="form-glass w-full" rows="8" placeholder="Descripción detallada, pasos a seguir, comandos, código, etc."></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label-glass">Tags / Palabras Clave</label>
+                            <input type="text" class="form-glass w-full" placeholder="mysql, memoria, oom, reinicio (separados por coma)">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label-glass">Vincular a Ticket (Opcional)</label>
+                            <input type="text" class="form-glass w-full" placeholder="NOV-XXXX">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-nova" style="background: rgba(255,255,255,0.1); color: white;" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-nova" style="background: var(--gradient-warning); color: white;">
+                        <i class="bi bi-save"></i> Guardar como Borrador
+                    </button>
+                    <button type="button" class="btn btn-nova btn-nova-success">
+                        <i class="bi bi-check-circle"></i> Publicar Artículo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function verArticulo(id) {
+            alert(`Abriendo artículo ${id} en modo vista completa...`);
+        }
+
+        function editarArticulo(id) {
+            alert(`Abriendo artículo ${id} en modo edición...`);
+        }
+
+        function buscarArticulos() {
+            const search = document.getElementById('searchKB').value;
+            alert(`Buscando: "${search}"`);
+        }
+
+        // Búsqueda en tiempo real
+        document.getElementById('searchKB').addEventListener('input', function() {
+            console.log('Buscando:', this.value);
+        });
+    </script>
+</body>
+</html>

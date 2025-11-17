@@ -3,176 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novatronic - Registro Manual de Ticket</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-          crossorigin="anonymous">
+    <title>Novatronic - Registro Manual Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/admin-style.css"> 
-    <link rel="stylesheet" href="/css/registro-admin-style.css"> 
+    <link rel="stylesheet" href="/css/nova-styles.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
-            
             <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard">
-                <img src="/img/logo.png" alt="Logo Novatronic Soporte"> 
-                <span class="badge bg-danger ms-2">ADMINISTRADOR</span>
+                <img src="/img/logo.png" alt="Novatronic">
+                <span class="badge bg-danger ms-2">ADMIN</span>
             </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAdmin" 
-                    aria-controls="navbarNavAdmin" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavAdmin">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/dashboard">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/tickets-nuevos">
-                            <i class="bi bi-box-arrow-in-down-right"></i> Tickets Recibidos <span class="badge bg-danger ms-1">4</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/tickets-revisados">
-                            <i class="bi bi-card-checklist"></i> Gestión de Tickets
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/reportes">
-                            <i class="bi bi-graph-up"></i> Reportes
-                        </a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/tickets-revisados"><i class="bi bi-list-check"></i> Gestión Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/reportes"><i class="bi bi-graph-up"></i> Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/base-conocimiento"><i class="bi bi-book"></i> Base Conocimiento</a></li>
                 </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-white me-3"><i class="bi bi-person-circle"></i> Admin</span>
+                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                </div>
             </div>
-            
-            <div class="d-none d-lg-block ms-auto"> 
-                 <a class="btn btn-outline-light btn-logout" href="/login">
-                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
-                </a>
-            </div>
-            
         </div>
     </nav>
 
-    <div class="main-content container-fluid-custom">
-        <h1 class="mb-4"><i class="bi bi-plus-square-fill"></i> Registrar Nuevo Ticket Manualmente</h1>
-        
-        <div class="card shadow">
-            <div class="card-header bg-warning text-dark">
-                <h5 class="mb-0 fw-bold"><i class="bi bi-person-fill"></i> Información del Solicitante</h5>
+    <div class="main-content">
+        <div class="mb-6">
+            <h1 class="text-4xl font-bold text-white mb-2">
+                <i class="bi bi-plus-square-fill"></i> Registro Manual de Ticket
+            </h1>
+            <p class="text-glass-muted">Req 1: Registro de tickets vía llamada telefónica o WhatsApp</p>
+        </div>
+
+        <!-- Req 1: Recepción Multicanal -->
+        <div class="alert-glass alert-glass-warning mb-6">
+            <div class="flex items-center gap-3">
+                <i class="bi bi-info-circle-fill text-3xl"></i>
+                <div>
+                    <h4 class="font-bold mb-1">Registro Manual - Canales No Integrados</h4>
+                    <p class="mb-0">Use este formulario para registrar tickets recibidos por teléfono, WhatsApp u otros canales no automatizados. El sistema aplicará clasificación y asignación automática.</p>
+                </div>
             </div>
-            <div class="card-body">
-                <form>
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                            <label for="clienteNombre" class="form-label fw-bold">Cliente / Empresa</label>
-                            <select id="clienteNombre" class="form-select" required>
-                                <option selected disabled value="">Seleccionar Cliente...</option>
-                                <option>Banco Central</option>
-                                <option>Financiera Alfa</option>
-                                <option>Grupo Innova</option>
-                                <option>Otros (Indicar en Contacto)</option>
-                            </select>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <form id="ticketForm" onsubmit="return procesarTicket(event)">
+                    <!-- Datos del Solicitante -->
+                    <div class="card-glass mb-4">
+                        <div class="card-glass-header bg-gradient-primary">
+                            <h3 class="text-xl font-bold mb-0">
+                                <i class="bi bi-person-fill"></i> Información del Solicitante
+                            </h3>
                         </div>
-                        <div class="col-md-6">
-                            <label for="contacto" class="form-label fw-bold">Nombre del Contacto</label>
-                            <input type="text" class="form-control" id="contacto" placeholder="Nombre de la persona que llama/escribe" required>
+                        <div class="card-glass-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Cliente / Empresa <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="cliente" required onchange="cargarContactos()">
+                                        <option value="">Seleccione...</option>
+                                        <option value="banco">Banco Central</option>
+                                        <option value="financiera">Financiera Alfa</option>
+                                        <option value="innova">Grupo Innova</option>
+                                        <option value="otro">Otro (Especificar en notas)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Canal de Recepción <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="origen" required>
+                                        <option value="telefono" selected>📞 Llamada Telefónica</option>
+                                        <option value="whatsapp">💬 WhatsApp</option>
+                                        <option value="email">📧 Correo Reenviado</option>
+                                        <option value="presencial">👤 Atención Presencial</option>
+                                        <option value="otro">Otro Canal</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Nombre del Contacto <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-glass w-full" id="contacto" required placeholder="Persona que reporta">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Email del Contacto</label>
+                                    <input type="email" class="form-glass w-full" id="email" placeholder="Para notificaciones automáticas">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Teléfono</label>
+                                    <input type="tel" class="form-glass w-full" id="telefono" placeholder="+51 999 999 999">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="email" class="form-label fw-bold">Email del Contacto</label>
-                            <input type="email" class="form-control" id="email" placeholder="Para notificaciones automáticas">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="origen" class="form-label fw-bold">Origen de la Solicitud (Requisito 1)</label>
-                            <select id="origen" class="form-select" required>
-                                <option selected>Llamada Telefónica</option>
-                                <option>WhatsApp / Chat</option>
-                                <option>Correo (Reenviado)</option>
-                                <option>Otro canal no integrado</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="card-header bg-light mb-4">
-                        <h5 class="mb-0 fw-bold"><i class="bi bi-journal-text"></i> Detalle y Clasificación (IRP / OPD)</h5>
                     </div>
 
-                    <div class="row g-3 mb-5"> <div class="col-12">
-                            <label for="asunto" class="form-label fw-bold">Asunto / Resumen Corto</label>
-                            <input type="text" class="form-control" id="asunto" required>
+                    <!-- Detalle del Ticket -->
+                    <div class="card-glass mb-4">
+                        <div class="card-glass-header">
+                            <h3 class="text-xl font-bold mb-0">
+                                <i class="bi bi-file-earmark-text"></i> Detalle del Problema/Requerimiento
+                            </h3>
                         </div>
-                        <div class="col-12">
-                            <label for="descripcion" class="form-label fw-bold">Descripción Completa del Problema/Requerimiento</label>
-                            <textarea class="form-control" id="descripcion" rows="4" required></textarea>
+                        <div class="card-glass-body">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label-glass">Asunto / Resumen <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-glass w-full" id="asunto" required maxlength="150" placeholder="Resumen breve del problema">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label-glass">Descripción Completa <span class="text-danger">*</span></label>
+                                    <textarea class="form-glass w-full" id="descripcion" rows="5" required minlength="30" placeholder="Describa el problema o requerimiento con el mayor detalle posible..."></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row g-3 mb-5 clasificacion-card py-3"> 
-                         <h6 class="mt-2 mb-3 fw-bold text-primary">Clasificación y Asignación Inmediata</h6>
-                        <div class="col-md-4">
-                            <label for="tipo" class="form-label fw-bold">Tipo (IRP)</label>
-                            <select id="tipo" class="form-select" required>
-                                <option selected>Incidente</option>
-                                <option>Requerimiento (Cambio)</option>
-                                <option>Consulta</option>
-                            </select>
+                    <!-- Req 4, 5, 6: Clasificación IRP/OPD y Asignación -->
+                    <div class="card-glass mb-4" style="border-left: 5px solid #667eea;">
+                        <div class="card-glass-header" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));">
+                            <h3 class="text-xl font-bold mb-0">
+                                <i class="bi bi-diagram-3"></i> Clasificación y Asignación (IRP/OPD)
+                            </h3>
+                            <small class="text-glass-muted">Esta información determina el flujo y SLA del ticket</small>
                         </div>
-                        <div class="col-md-4">
-                            <label for="prioridad" class="form-label fw-bold">Prioridad (SD)</label>
-                            <select id="prioridad" class="form-select" required>
-                                <option>Crítica (SLA 1h)</option>
-                                <option selected>Alta (SLA 4h)</option>
-                                <option>Media (SLA 8h)</option>
-                                <option>Baja (SLA 24h)</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="categoria" class="form-label fw-bold">Categoría / Módulo (OPD)</label>
-                            <select id="categoria" class="form-select" required>
-                                <option>Módulo de Pagos</option>
-                                <option>Infraestructura (DB)</option>
-                                <option selected>Módulo de Reportes</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                             <label for="agente" class="form-label fw-bold">Asignar a Agente/Grupo (Requisito 3)</label>
-                            <select id="agente" class="form-select" required>
-                                <option>Grupo de Reportes (Asignación Sugerida)</option>
-                                <option>Juan Pérez</option>
-                                <option selected>Laura Gómez</option>
-                            </select>
-                            <small class="text-success d-block mt-1"><i class="bi bi-lightning-fill"></i> Se asignará automáticamente en cuanto se guarde.</small>
+                        <div class="card-glass-body">
+                            <div class="row g-3">
+                                <!-- Clasificación IRP (Incident/Request/Problem) -->
+                                <div class="col-md-4">
+                                    <label class="form-label-glass">Tipo (IRP) <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="tipoIRP" required onchange="actualizarCategoriasOPD()">
+                                        <option value="">Seleccione...</option>
+                                        <option value="incidente" selected>🔴 Incidente (Servicio interrumpido)</option>
+                                        <option value="requerimiento">🔵 Requerimiento (Cambio/Mejora)</option>
+                                        <option value="problema">🟠 Problema (Causa raíz recurrente)</option>
+                                        <option value="consulta">🟢 Consulta (Información)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Impacto y Urgencia -->
+                                <div class="col-md-4">
+                                    <label class="form-label-glass">Impacto <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="impacto" required onchange="calcularPrioridad()">
+                                        <option value="">Seleccione...</option>
+                                        <option value="critico">Crítico (Toda la organización)</option>
+                                        <option value="alto">Alto (Departamento completo)</option>
+                                        <option value="medio">Medio (Grupo de usuarios)</option>
+                                        <option value="bajo">Bajo (Usuario individual)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label-glass">Urgencia <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="urgencia" required onchange="calcularPrioridad()">
+                                        <option value="">Seleccione...</option>
+                                        <option value="critica">Crítica (Inmediato)</option>
+                                        <option value="alta">Alta (Hoy)</option>
+                                        <option value="media">Media (Esta semana)</option>
+                                        <option value="baja">Baja (Cuando sea posible)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Prioridad Calculada Automáticamente -->
+                                <div class="col-12">
+                                    <div id="prioridadCalculada" class="p-4 rounded-lg" style="background: rgba(255,255,255,0.05); display: none;">
+                                        <div class="flex items-center gap-3">
+                                            <i class="bi bi-calculator text-3xl"></i>
+                                            <div>
+                                                <div class="text-sm text-glass-muted">Prioridad Calculada (Impacto × Urgencia)</div>
+                                                <div class="text-2xl font-bold" id="prioridadTexto"></div>
+                                                <div class="text-sm mt-1" id="slaTexto"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Categoría OPD (Operational Process Definition) -->
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Categoría / Módulo (OPD) <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="categoriaOPD" required>
+                                        <option value="">Seleccione primero el Tipo...</option>
+                                    </select>
+                                </div>
+
+                                <!-- Req 6: Asignación Automática -->
+                                <div class="col-md-6">
+                                    <label class="form-label-glass">Asignar a (Automático) <span class="text-danger">*</span></label>
+                                    <select class="form-glass w-full" id="asignacion" required>
+                                        <option value="auto" selected>🤖 Asignación Automática (Recomendado)</option>
+                                        <option value="juan">Juan Pérez (Infraestructura)</option>
+                                        <option value="laura">Laura Gómez (Desarrollo)</option>
+                                        <option value="pedro">Pedro Ríos (Soporte N1)</option>
+                                        <option value="grupo-infra">Grupo Infraestructura</option>
+                                        <option value="grupo-dev">Grupo Desarrollo</option>
+                                    </select>
+                                    <small class="text-glass-muted text-xs">
+                                        <i class="bi bi-lightbulb"></i> El sistema asignará según reglas predefinidas basadas en tipo, categoría y carga actual
+                                    </small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="d-flex justify-content-end gap-2 mt-4"> 
-                        <a href="/admin/tickets-nuevos" class="btn btn-outline-secondary">
+
+                    <!-- Botones -->
+                    <div class="flex justify-end gap-3">
+                        <a href="/admin/dashboard" class="btn btn-nova" style="background: rgba(255,255,255,0.1); color: white;">
                             <i class="bi bi-x-circle"></i> Cancelar
                         </a>
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="bi bi-save"></i> Crear Ticket y Asignar
+                        <button type="submit" class="btn btn-nova btn-nova-primary btn-lg">
+                            <i class="bi bi-save"></i> Crear Ticket y Aplicar Clasificación
                         </button>
                     </div>
                 </form>
             </div>
+
+            <!-- Sidebar de Ayuda -->
+            <div class="col-lg-4">
+                <!-- Guía de Clasificación -->
+                <div class="card-glass mb-4 sticky-card">
+                    <div class="card-glass-header bg-gradient-info">
+                        <h3 class="text-lg font-bold mb-0">
+                            <i class="bi bi-question-circle"></i> Guía de Clasificación
+                        </h3>
+                    </div>
+                    <div class="card-glass-body">
+                        <h4 class="text-white text-sm font-bold mb-2">Tipos IRP:</h4>
+                        <div class="space-y-2 mb-4">
+                            <div class="p-2 rounded" style="background: rgba(255,255,255,0.05);">
+                                <strong class="text-danger">Incidente:</strong>
+                                <p class="text-xs mb-0">Interrupción no planificada o reducción de calidad del servicio</p>
+                            </div>
+                            <div class="p-2 rounded" style="background: rgba(255,255,255,0.05);">
+                                <strong class="text-info">Requerimiento:</strong>
+                                <p class="text-xs mb-0">Solicitud de cambio, mejora o nueva funcionalidad</p>
+                            </div>
+                            <div class="p-2 rounded" style="background: rgba(255,255,255,0.05);">
+                                <strong class="text-warning">Problema:</strong>
+                                <p class="text-xs mb-0">Causa raíz de incidentes recurrentes</p>
+                            </div>
+                        </div>
+
+                        <h4 class="text-white text-sm font-bold mb-2">Cálculo de Prioridad:</h4>
+                        <table class="w-full text-xs">
+                            <thead>
+                                <tr class="border-b border-white border-opacity-20">
+                                    <th class="text-left py-2">Impacto/Urgencia</th>
+                                    <th class="text-center">Crítico</th>
+                                    <th class="text-center">Alto</th>
+                                    <th class="text-center">Medio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-glass-muted">
+                                <tr>
+                                    <td class="py-1">Crítico</td>
+                                    <td class="text-center"><span class="badge-modern badge-critica" style="font-size: 0.6rem;">CRÍTICA</span></td>
+                                    <td class="text-center"><span class="badge-modern badge-alta" style="font-size: 0.6rem;">ALTA</span></td>
+                                    <td class="text-center"><span class="badge-modern badge-media" style="font-size: 0.6rem;">MEDIA</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">Alto</td>
+                                    <td class="text-center"><span class="badge-modern badge-alta" style="font-size: 0.6rem;">ALTA</span></td>
+                                    <td class="text-center"><span class="badge-modern badge-media" style="font-size: 0.6rem;">MEDIA</span></td>
+                                    <td class="text-center"><span class="badge-modern badge-baja" style="font-size: 0.6rem;">BAJA</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <hr class="border-white border-opacity-20 my-3">
+
+                        <h4 class="text-white text-sm font-bold mb-2">SLA por Prioridad:</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="badge-modern badge-critica" style="font-size: 0.65rem;">CRÍTICA</span>
+                                <span class="text-glass-muted">1h respuesta / 4h resolución</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="badge-modern badge-alta" style="font-size: 0.65rem;">ALTA</span>
+                                <span class="text-glass-muted">4h respuesta / 8h resolución</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="badge-modern badge-media" style="font-size: 0.65rem;">MEDIA</span>
+                                <span class="text-glass-muted">8h respuesta / 24h resolución</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="badge-modern badge-baja" style="font-size: 0.65rem;">BAJA</span>
+                                <span class="text-glass-muted">24h respuesta / 48h resolución</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-            crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Categorías OPD por tipo
+        const categoriasOPD = {
+            incidente: [
+                { value: 'pagos', text: 'Módulo de Pagos' },
+                { value: 'reportes', text: 'Módulo de Reportes' },
+                { value: 'db', text: 'Infraestructura (Base de Datos)' },
+                { value: 'red', text: 'Infraestructura (Red)' },
+                { value: 'seguridad', text: 'Seguridad / Accesos' }
+            ],
+            requerimiento: [
+                { value: 'mejora', text: 'Mejora de Funcionalidad' },
+                { value: 'nuevo', text: 'Nueva Funcionalidad' },
+                { value: 'integracion', text: 'Integración / API' },
+                { value: 'reportes', text: 'Nuevos Reportes' }
+            ],
+            problema: [
+                { value: 'recurrente', text: 'Problema Recurrente' },
+                { value: 'performance', text: 'Performance / Lentitud' },
+                { value: 'datos', text: 'Calidad de Datos' }
+            ],
+            consulta: [
+                { value: 'uso', text: 'Consulta de Uso' },
+                { value: 'capacitacion', text: 'Capacitación' },
+                { value: 'documentacion', text: 'Documentación' }
+            ]
+        };
+
+        // Actualizar categorías según tipo
+        function actualizarCategoriasOPD() {
+            const tipo = document.getElementById('tipoIRP').value;
+            const select = document.getElementById('categoriaOPD');
+            
+            select.innerHTML = '<option value="">Seleccione una categoría...</option>';
+            
+            if (tipo && categoriasOPD[tipo]) {
+                categoriasOPD[tipo].forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.value;
+                    option.textContent = cat.text;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        // Calcular prioridad automáticamente
+        function calcularPrioridad() {
+            const impacto = document.getElementById('impacto').value;
+            const urgencia = document.getElementById('urgencia').value;
+            const divResultado = document.getElementById('prioridadCalculada');
+            
+            if (!impacto || !urgencia) {
+                divResultado.style.display = 'none';
+                return;
+            }
+
+            const matriz = {
+                'critico': { 'critica': 'CRÍTICA', 'alta': 'ALTA', 'media': 'MEDIA', 'baja': 'MEDIA' },
+                'alto': { 'critica': 'ALTA', 'alta': 'ALTA', 'media': 'MEDIA', 'baja': 'BAJA' },
+                'medio': { 'critica': 'MEDIA', 'alta': 'MEDIA', 'media': 'BAJA', 'baja': 'BAJA' },
+                'bajo': { 'critica': 'MEDIA', 'alta': 'BAJA', 'media': 'BAJA', 'baja': 'BAJA' }
+            };
+
+            const slas = {
+                'CRÍTICA': '1h respuesta / 4h resolución',
+                'ALTA': '4h respuesta / 8h resolución',
+                'MEDIA': '8h respuesta / 24h resolución',
+                'BAJA': '24h respuesta / 48h resolución'
+            };
+
+            const prioridad = matriz[impacto][urgencia];
+            const badgeClass = {
+                'CRÍTICA': 'badge-critica',
+                'ALTA': 'badge-alta',
+                'MEDIA': 'badge-media',
+                'BAJA': 'badge-baja'
+            };
+
+            document.getElementById('prioridadTexto').innerHTML = 
+                `<span class="badge-modern ${badgeClass[prioridad]}">${prioridad}</span>`;
+            document.getElementById('slaTexto').innerHTML = 
+                `<i class="bi bi-clock"></i> SLA aplicable: <strong>${slas[prioridad]}</strong>`;
+            
+            divResultado.style.display = 'block';
+        }
+
+        // Procesar formulario
+        function procesarTicket(e) {
+            e.preventDefault();
+            
+            const ticketId = 'NOV-' + Math.floor(Math.random() * 9000 + 1000);
+            const cliente = document.getElementById('cliente').options[document.getElementById('cliente').selectedIndex].text;
+            const prioridad = document.querySelector('#prioridadTexto .badge-modern')?.textContent || 'MEDIA';
+            
+            alert(`✓ Ticket creado exitosamente\n\nID: ${ticketId}\nCliente: ${cliente}\nPrioridad: ${prioridad}\n\nEl ticket ha sido clasificado y asignado automáticamente según las reglas IRP/OPD configuradas.`);
+            
+            window.location.href = '/admin/detalles-ticket/' + ticketId;
+            
+            return false;
+        }
+
+        // Cargar contactos del cliente (simulado)
+        function cargarContactos() {
+            const cliente = document.getElementById('cliente').value;
+            const contactos = {
+                'banco': { nombre: 'María González', email: 'maria.gonzalez@bancocentral.com', telefono: '+51 999-888-777' },
+                'financiera': { nombre: 'Carlos Ruiz', email: 'cruiz@financiera.com', telefono: '+51 988-777-666' },
+                'innova': { nombre: 'Ana Martínez', email: 'amartinez@innova.com', telefono: '+51 977-666-555' }
+            };
+            
+            if (contactos[cliente]) {
+                document.getElementById('contacto').value = contactos[cliente].nombre;
+                document.getElementById('email').value = contactos[cliente].email;
+                document.getElementById('telefono').value = contactos[cliente].telefono;
+            }
+        }
     </script>
 </body>
 </html>

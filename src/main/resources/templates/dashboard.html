@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novatronic - Dashboard Administrativo</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        /* Req 11: Dashboard de Capacidad (CAM) */
+        .capacity-indicator {
+            height: 8px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .capacity-marker {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background: white;
+            border: 2px solid #333;
+            top: -2px;
+            transition: left 0.5s;
+        }
+        
+        .alert-sla {
+            animation: alertPulse 1.5s infinite;
+        }
+        
+        @keyframes alertPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            50% { box-shadow: 0 0 20px 10px rgba(220, 53, 69, 0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard">
+                <img src="/img/logo.png" alt="Novatronic">
+                <span class="badge bg-danger ms-2">ADMINISTRADOR</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/dashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/tickets">
+                            <i class="bi bi-card-checklist"></i> Gestión de Tickets
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/reportes">
+                            <i class="bi bi-graph-up"></i> Reportes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/base-conocimiento">
+                            <i class="bi bi-book"></i> Base de Conocimiento
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <span class="text-light me-3">
+                        <i class="bi bi-person-circle"></i> Admin Usuario
+                    </span>
+                    <a class="btn btn-outline-light btn-sm" href="/login">
+                        <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <!-- Header con fecha y hora actual -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">
+                <i class="bi bi-speedometer2 text-primary"></i> Panel de Control Administrativo
+            </h1>
+            <div class="text-muted">
+                <i class="bi bi-calendar3"></i> <span id="currentDate"></span>
+                <i class="bi bi-clock ms-2"></i> <span id="currentTime"></span>
+            </div>
+        </div>
+
+        <!-- Req 10: Sistema de Alertas Proactivo -->
+        <div class="alert alert-danger alert-sla d-flex align-items-center mb-4" role="alert" id="slaAlert">
+            <i class="bi bi-exclamation-triangle-fill fs-4 me-3"></i>
+            <div class="flex-grow-1">
+                <h5 class="alert-heading mb-1">¡Alerta SLA Crítica!</h5>
+                <p class="mb-0">2 tickets están próximos a incumplir el SLA. Requieren atención inmediata.</p>
+            </div>
+            <a href="#ticketsCriticos" class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-right-circle"></i> Ver Tickets
+            </a>
+        </div>
+
+        <!-- Req 11: Dashboard de Capacidad (CAM) - KPIs Principales -->
+        <h3 class="mb-3">
+            <i class="bi bi-bar-chart-line"></i> Métricas en Tiempo Real
+        </h3>
+        <div class="row g-4 mb-5">
+            <!-- KPI 1: Tickets Nuevos -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card kpi-card border-info">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="text-muted text-uppercase mb-1 small fw-bold">Nuevos en Espera</p>
+                                <h2 class="display-4 fw-bold text-info mb-0">8</h2>
+                                <small class="text-success">
+                                    <i class="bi bi-arrow-down"></i> -2 vs ayer
+                                </small>
+                            </div>
+                            <i class="bi bi-inbox-fill kpi-icon text-info"></i>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="/admin/tickets?estado=nuevo" class="text-decoration-none small">
+                            Ver bandeja <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 2: En Proceso -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card kpi-card border-primary">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="text-muted text-uppercase mb-1 small fw-bold">En Proceso</p>
+                                <h2 class="display-4 fw-bold text-primary mb-0">34</h2>
+                                <small class="text-danger">
+                                    <i class="bi bi-arrow-up"></i> +5 vs ayer
+                                </small>
+                            </div>
+                            <i class="bi bi-gear-fill kpi-icon text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="/admin/tickets?estado=proceso" class="text-decoration-none small">
+                            Ver activos <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 3: SLA en Riesgo -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card kpi-card border-warning">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="text-muted text-uppercase mb-1 small fw-bold">SLA en Riesgo</p>
+                                <h2 class="display-4 fw-bold text-warning mb-0">2</h2>
+                                <small class="text-danger fw-bold">
+                                    <i class="bi bi-exclamation-circle"></i> Acción requerida
+                                </small>
+                            </div>
+                            <i class="bi bi-hourglass-split kpi-icon text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#ticketsCriticos" class="text-decoration-none small">
+                            Ver críticos <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 4: Cumplimiento SLA -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card kpi-card border-success">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="text-muted text-uppercase mb-1 small fw-bold">Cumplimiento SLA</p>
+                                <h2 class="display-4 fw-bold text-success mb-0">97.2%</h2>
+                                <small class="text-success">
+                                    <i class="bi bi-check-circle"></i> Meta: 95%
+                                </small>
+                            </div>
+                            <i class="bi bi-award-fill kpi-icon text-success"></i>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="/admin/reportes" class="text-decoration-none small">
+                            Ver reporte <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Req 11: Carga de Trabajo por Grupo (CAM) -->
+        <div class="row mb-5">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-people-fill"></i> Capacidad por Grupo de Soporte
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Grupo 1 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Infraestructura (DB)</span>
+                                <span class="badge bg-warning">75% capacidad</span>
+                            </div>
+                            <div class="capacity-indicator">
+                                <div class="capacity-marker" style="left: 75%;"></div>
+                            </div>
+                            <small class="text-muted">12 tickets asignados / 16 máximo</small>
+                        </div>
+
+                        <!-- Grupo 2 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Desarrollo (Aplicaciones)</span>
+                                <span class="badge bg-success">45% capacidad</span>
+                            </div>
+                            <div class="capacity-indicator">
+                                <div class="capacity-marker" style="left: 45%;"></div>
+                            </div>
+                            <small class="text-muted">9 tickets asignados / 20 máximo</small>
+                        </div>
+
+                        <!-- Grupo 3 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Soporte Nivel 1</span>
+                                <span class="badge bg-danger">92% capacidad - Saturado</span>
+                            </div>
+                            <div class="capacity-indicator">
+                                <div class="capacity-marker" style="left: 92%;"></div>
+                            </div>
+                            <small class="text-muted">11 tickets asignados / 12 máximo</small>
+                        </div>
+
+                        <!-- Grupo 4 -->
+                        <div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Redes y Seguridad</span>
+                                <span class="badge bg-success">30% capacidad</span>
+                            </div>
+                            <div class="capacity-indicator">
+                                <div class="capacity-marker" style="left: 30%;"></div>
+                            </div>
+                            <small class="text-muted">6 tickets asignados / 20 máximo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-lightning-fill"></i> Acciones Rápidas
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-3">
+                            <a href="/admin/tickets/nuevo" class="btn btn-primary btn-lg">
+                                <i class="bi bi-plus-circle"></i> Registrar Ticket Manual
+                            </a>
+                            <a href="/admin/tickets?estado=nuevo" class="btn btn-outline-info">
+                                <i class="bi bi-inbox"></i> Ver Tickets Nuevos (8)
+                            </a>
+                            <a href="/admin/reportes" class="btn btn-outline-success">
+                                <i class="bi bi-file-earmark-bar-graph"></i> Generar Reporte
+                            </a>
+                            <a href="/admin/base-conocimiento" class="btn btn-outline-secondary">
+                                <i class="bi bi-book"></i> Base de Conocimiento
+                            </a>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h6 class="text-muted mb-3">Tu Rendimiento Hoy</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span>Tickets Cerrados:</span>
+                                <span class="badge bg-success">7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span>Tiempo Promedio Respuesta:</span>
+                                <span class="badge bg-info">28 min</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span>Tickets Asignados:</span>
+                                <span class="badge bg-primary">5</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Req 9 y 10: Tickets con SLA Crítico -->
+        <div class="card shadow-lg" id="ticketsCriticos">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-exclamation-triangle-fill"></i> 
+                    Alerta: Tickets con SLA en Riesgo Crítico
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Prioridad</th>
+                                <th>Asunto</th>
+                                <th>Cliente</th>
+                                <th>Tiempo Restante</th>
+                                <th>Asignado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-danger">
+                                <td><strong>NOV-2341</strong></td>
+                                <td><span class="badge badge-critica">CRÍTICA</span></td>
+                                <td>Caída total del servicio de facturación</td>
+                                <td>Banco Central</td>
+                                <td class="text-danger fw-bold">
+                                    <i class="bi bi-alarm-fill"></i> 15 minutos
+                                </td>
+                                <td>Juan Pérez</td>
+                                <td>
+                                    <a href="/admin/tickets/NOV-2341" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-arrow-right-circle"></i> Atender
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="table-warning">
+                                <td><strong>NOV-2338</strong></td>
+                                <td><span class="badge badge-alta">ALTA</span></td>
+                                <td>Error en sincronización de base de datos</td>
+                                <td>Financiera Alfa</td>
+                                <td class="text-warning fw-bold">
+                                    <i class="bi bi-clock-fill"></i> 45 minutos
+                                </td>
+                                <td>Laura Gómez</td>
+                                <td>
+                                    <a href="/admin/tickets/NOV-2338" class="btn btn-sm btn-warning">
+                                        <i class="bi bi-arrow-right-circle"></i> Revisar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Actualizar fecha y hora
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('es-PE', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('es-PE');
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Simular actualización de capacidad
+        setInterval(() => {
+            document.querySelectorAll('.capacity-marker').forEach(marker => {
+                const currentLeft = parseInt(marker.style.left);
+                const newLeft = Math.max(0, Math.min(100, currentLeft + (Math.random() - 0.5) * 5));
+                marker.style.left = newLeft + '%';
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

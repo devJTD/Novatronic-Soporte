@@ -21,7 +21,7 @@ public class LoginController {
             return "redirect:/login?error=1";
         }
 
-        boolean esAdmin = username.toLowerCase().contains("admin");
+        boolean esAdmin = username != null && username.toLowerCase().contains("admin");
         if (esAdmin) {
             return "redirect:/admin/dashboard";
         } else {

@@ -1,0 +1,628 @@
+/* ============================================
+   NOVATRONIC - SISTEMA DE DISEÑO INNOVADOR
+   Glassmorphism + Neumorphism + Animaciones
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Colores principales */
+    --nova-primary: #667eea;
+    --nova-secondary: #764ba2;
+    --nova-accent: #f093fb;
+    --nova-dark: #1a1d29;
+    --nova-darker: #0f111a;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --gradient-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    --gradient-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+    --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* Efectos */
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.24);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+/* Efecto de partículas de fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: moveBackground 20s ease-in-out infinite;
+}
+
+@keyframes moveBackground {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 20px); }
+}
+
+/* ============================================
+   NAVBAR GLASSMORPHISM
+   ============================================ */
+.navbar-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+.navbar-glass .navbar-brand img {
+    height: 50px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: var(--transition);
+}
+
+.navbar-glass .navbar-brand:hover img {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.navbar-glass .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 8px 16px !important;
+    border-radius: 12px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.navbar-glass .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.navbar-glass .nav-link:hover::before,
+.navbar-glass .nav-link.active::before {
+    width: 80%;
+}
+
+.navbar-glass .nav-link:hover,
+.navbar-glass .nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: white !important;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   CARDS GLASSMORPHISM
+   ============================================ */
+.card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.card-glass:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-glass-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 20px 24px;
+    color: white;
+    font-weight: 600;
+}
+
+.card-glass-body {
+    padding: 24px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================
+   KPI CARDS CON EFECTOS 3D
+   ============================================ */
+.kpi-card-3d {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 28px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.kpi-card-3d::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.kpi-card-3d:hover::before {
+    opacity: 1;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.kpi-card-3d:hover {
+    transform: translateY(-12px) rotateX(5deg);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(102, 126, 234, 0.4);
+}
+
+.kpi-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.kpi-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+.kpi-icon-large {
+    font-size: 4rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: var(--transition);
+}
+
+.kpi-card-3d:hover .kpi-icon-large {
+    opacity: 0.3;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ============================================
+   BADGES MODERNOS
+   ============================================ */
+.badge-modern {
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.badge-modern:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.badge-critica {
+    background: var(--gradient-danger);
+    color: white;
+    animation: pulse-danger 2s infinite;
+}
+
+.badge-alta {
+    background: var(--gradient-warning);
+    color: white;
+}
+
+.badge-media {
+    background: var(--gradient-info);
+    color: white;
+}
+
+.badge-baja {
+    background: linear-gradient(135deg, #a8a8a8 0%, #6c757d 100%);
+    color: white;
+}
+
+@keyframes pulse-danger {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(235, 51, 73, 0.7);
+    }
+    50% { 
+        box-shadow: 0 0 0 15px rgba(235, 51, 73, 0);
+    }
+}
+
+/* ============================================
+   BOTONES MODERNOS CON EFECTOS
+   ============================================ */
+.btn-nova {
+    padding: 12px 32px;
+    border-radius: 16px;
+    font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-nova::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-nova:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-nova-primary {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.btn-nova-success {
+    background: var(--gradient-success);
+    color: white;
+}
+
+.btn-nova-danger {
+    background: var(--gradient-danger);
+    color: white;
+}
+
+.btn-nova:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-nova:active {
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   TABLAS FUTURISTAS
+   ============================================ */
+.table-futuristic {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.table-futuristic thead {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.table-futuristic thead th {
+    padding: 18px;
+    font-weight: 600;
+    border: none;
+}
+
+.table-futuristic tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.table-futuristic tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.01);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.table-futuristic tbody td {
+    padding: 16px 18px;
+    vertical-align: middle;
+    border: none;
+}
+
+/* ============================================
+   TIMELINE MODERNA
+   ============================================ */
+.timeline-modern {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-modern::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, 
+        var(--nova-primary) 0%, 
+        var(--nova-accent) 100%);
+    border-radius: 2px;
+}
+
+.timeline-item-modern {
+    position: relative;
+    padding: 20px 0;
+    animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item-modern::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--nova-primary);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+    z-index: 2;
+}
+
+.timeline-item-modern.system::before {
+    background: var(--gradient-info);
+    border-color: #4facfe;
+}
+
+.timeline-item-modern.client::before {
+    background: var(--gradient-success);
+    border-color: #11998e;
+}
+
+.timeline-item-modern.agent::before {
+    background: var(--gradient-warning);
+    border-color: #f2994a;
+}
+
+.timeline-bubble {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   FORMULARIOS GLASSMORPHISM
+   ============================================ */
+.form-glass {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+    transition: var(--transition);
+}
+
+.form-glass:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.form-label-glass {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* ============================================
+   ALERTAS CON ANIMACIÓN
+   ============================================ */
+.alert-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid;
+    border-radius: 16px;
+    padding: 20px 24px;
+    color: white;
+    box-shadow: var(--shadow-md);
+    animation: slideInDown 0.5s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-glass-danger {
+    border-left-color: #eb3349;
+    background: linear-gradient(135deg, rgba(235, 51, 73, 0.2) 0%, rgba(244, 92, 67, 0.1) 100%);
+}
+
+.alert-glass-success {
+    border-left-color: #11998e;
+    background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.1) 100%);
+}
+
+.alert-glass-warning {
+    border-left-color: #f2994a;
+    background: linear-gradient(135deg, rgba(242, 153, 74, 0.2) 0%, rgba(242, 201, 76, 0.1) 100%);
+}
+
+/* ============================================
+   GRÁFICOS GLASSMORPHISM
+   ============================================ */
+.chart-container-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .kpi-number {
+        font-size: 2.5rem;
+    }
+    
+    .timeline-modern {
+        padding-left: 30px;
+    }
+    
+    .navbar-glass .navbar-brand img {
+        height: 40px;
+    }
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.text-glass {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.text-glass-muted {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.bg-gradient-success {
+    background: var(--gradient-success);
+}
+
+.bg-gradient-danger {
+    background: var(--gradient-danger);
+}
+
+.shadow-glow {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+/* Animación de carga */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

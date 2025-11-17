@@ -3,161 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novatronic - Registrar Nuevo Ticket</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-          crossorigin="anonymous">
+    <title>Novatronic - Nuevo Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <link rel="stylesheet" href="/css/dashboard-cliente-style.css"> 
-    <link rel="stylesheet" href="/css/registro-cliente-style.css"> 
+    <link rel="stylesheet" href="/css/nova-styles.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
-            
             <a class="navbar-brand d-flex align-items-center" href="/cliente/dashboard">
-                <img src="/img/logo.png" alt="Logo Novatronic Soporte" class="navbar-logo"> 
-                <span class="badge bg-info text-dark ms-2">CLIENTE</span> 
+                <img src="/img/logo.png" alt="Novatronic">
+                <span class="badge bg-info ms-2">CLIENTE</span>
             </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavClient" 
-                    aria-controls="navbarNavClient" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavClient">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cliente/dashboard">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/cliente/registro-ticket">
-                            <i class="bi bi-plus-circle"></i> Nuevo Ticket
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cliente/lista-tickets">
-                            <i class="bi bi-list-task"></i> Mis Tickets
-                        </a>
-                    </li>
-
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/cliente/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/cliente/registro-ticket"><i class="bi bi-plus-circle"></i> Nuevo Ticket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cliente/lista-tickets"><i class="bi bi-list-task"></i> Mis Tickets</a></li>
                 </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-white me-3"><i class="bi bi-building"></i> Banco Central</span>
+                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                </div>
             </div>
-            
-            <div class="d-none d-lg-block ms-auto"> 
-                 <a class="btn btn-outline-light btn-logout" href="/login">
-                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
-                </a>
-            </div>
-            
         </div>
     </nav>
 
-    <div class="main-content container-fluid-custom">
-        <h1 class="mb-4 text-primary"><i class="bi bi-file-earmark-plus-fill"></i> Registrar Nuevo Ticket de Soporte</h1>
-        
-        <div class="alert alert-warning d-flex align-items-center" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <div>
-                Por favor, complete todos los campos obligatorios. Sea específico en el asunto y descripción para una atención más rápida.
+    <div class="main-content">
+        <div class="mb-6">
+            <h1 class="text-4xl font-bold text-white mb-2"><i class="bi bi-file-earmark-plus-fill"></i> Crear Nuevo Ticket</h1>
+            <p class="text-glass-muted">Complete el formulario con los detalles de su solicitud</p>
+        </div>
+
+        <!-- Req 3: Validación Obligatoria de Datos (DQA) -->
+        <div class="alert-glass alert-glass-warning mb-6">
+            <div class="flex items-center gap-3">
+                <i class="bi bi-info-circle-fill text-3xl"></i>
+                <p class="mb-0">Los campos marcados con <span class="text-danger">*</span> son obligatorios. Complete todos los datos para garantizar una atención rápida y eficiente.</p>
             </div>
         </div>
 
-        <div class="card shadow p-4 p-md-5">
-            <form id="ticketRegistrationForm">
-                
-                <h3 class="card-title text-dark mb-4 border-bottom pb-2">Datos del Ticket</h3>
+        <div class="card-glass">
+            <div class="card-glass-body">
+                <form id="ticketForm" onsubmit="return validateForm(event)">
+                    <div class="row g-4">
+                        <!-- Req 2: Registro Único de Incidente (Auto-generado) -->
+                        <div class="col-12">
+                            <div class="alert-glass" style="background: var(--gradient-info);">
+                                <div class="flex items-center gap-3">
+                                    <i class="bi bi-hash text-2xl"></i>
+                                    <div>
+                                        <div class="text-sm opacity-80">ID de Ticket (se generará automáticamente)</div>
+                                        <div class="font-bold text-lg">NOV-XXXX</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="row g-3 mb-4">
-                    <div class="col-md-9">
-                        <label for="asuntoTicket" class="form-label fw-bold">Asunto/Título del Problema <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-lg" id="asuntoTicket" placeholder="Ej: Fallo en la conexión con API 'A'" required>
-                        <div class="form-text">Máx. 100 caracteres.</div>
+                        <!-- Asunto -->
+                        <div class="col-12">
+                            <label class="form-label-glass">Asunto del Ticket <span class="text-danger">*</span></label>
+                            <input type="text" class="form-glass w-full" id="asunto" required maxlength="150" placeholder="Ej: Error en módulo de facturación">
+                            <small class="text-glass-muted">Máximo 150 caracteres</small>
+                        </div>
+
+                        <!-- Tipo de Servicio -->
+                        <div class="col-md-6">
+                            <label class="form-label-glass">Tipo de Solicitud <span class="text-danger">*</span></label>
+                            <select class="form-glass w-full" id="tipoSolicitud" required>
+                                <option value="">Seleccione...</option>
+                                <option value="incidente">Incidente / Error</option>
+                                <option value="consulta">Consulta Técnica</option>
+                                <option value="requerimiento">Requerimiento de Mejora</option>
+                            </select>
+                        </div>
+
+                        <!-- Módulo Afectado -->
+                        <div class="col-md-6">
+                            <label class="form-label-glass">Módulo Afectado <span class="text-danger">*</span></label>
+                            <select class="form-glass w-full" id="moduloAfectado" required>
+                                <option value="">Seleccione...</option>
+                                <option value="modulo-a">Módulo de Transacciones (A)</option>
+                                <option value="modulo-b">Módulo de Reportes (B)</option>
+                                <option value="modulo-c">Módulo de Administración (C)</option>
+                                <option value="otro">Otro / General</option>
+                            </select>
+                        </div>
+
+                        <!-- Req 4: Asignación de Prioridad -->
+                        <div class="col-md-12">
+                            <label class="form-label-glass">Nivel de Prioridad / Impacto <span class="text-danger">*</span></label>
+                            <select class="form-glass w-full" id="prioridad" required onchange="updatePriorityInfo()">
+                                <option value="">Seleccione el impacto...</option>
+                                <option value="critica">🔴 CRÍTICA - Servicio caído completamente (SLA: 1 hora)</option>
+                                <option value="alta">🟠 ALTA - Impacto severo en operaciones (SLA: 4 horas)</option>
+                                <option value="media">🟡 MEDIA - Problema menor / Workaround disponible (SLA: 8 horas)</option>
+                                <option value="baja">🟢 BAJA - Consulta / Mejora (SLA: 24 horas)</option>
+                            </select>
+                            <div id="priorityInfo" class="mt-2 p-3 rounded-lg" style="background: rgba(255,255,255,0.05); display: none;">
+                                <small class="text-glass"></small>
+                            </div>
+                        </div>
+
+                        <!-- Descripción Detallada -->
+                        <div class="col-12">
+                            <label class="form-label-glass">Descripción Detallada del Problema <span class="text-danger">*</span></label>
+                            <textarea class="form-glass w-full" id="descripcion" rows="6" required minlength="50" maxlength="2000" placeholder="Describa el problema con el mayor detalle posible. Incluya:&#10;- Pasos para replicar el problema&#10;- Mensajes de error (si aplica)&#10;- Impacto en su operación&#10;- Intentos de solución realizados"></textarea>
+                            <small class="text-glass-muted">Mínimo 50 caracteres, máximo 2000</small>
+                        </div>
+
+                        <!-- Archivos adjuntos -->
+                        <div class="col-12">
+                            <label class="form-label-glass">Archivos Adjuntos (Opcional)</label>
+                            <input type="file" class="form-glass w-full" id="adjuntos" multiple accept=".pdf,.jpg,.jpeg,.png,.zip">
+                            <small class="text-glass-muted">Capturas de pantalla, logs o documentos relevantes (Máx. 5 archivos, 10MB c/u)</small>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="col-12">
+                            <div class="flex justify-end gap-3 pt-4 border-t border-white border-opacity-20">
+                                <a href="/cliente/dashboard" class="btn btn-nova" style="background: rgba(255,255,255,0.1); color: white;">
+                                    <i class="bi bi-x-circle"></i> Cancelar
+                                </a>
+                                <button type="submit" class="btn btn-nova btn-nova-primary btn-lg">
+                                    <i class="bi bi-send-fill"></i> Enviar Ticket
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <label for="prioridad" class="form-label fw-bold">Prioridad <span class="text-danger">*</span></label>
-                        <select class="form-select form-select-lg" id="prioridad" required>
-                            <option value="" selected disabled>Seleccione...</option>
-                            <option value="critica" class="text-danger fw-bold">Crítica (Fallo Total)</option>
-                            <option value="alta" class="text-warning fw-bold">Alta (Impacto Severo)</option>
-                            <option value="media">Media (Problema Menor)</option>
-                            <option value="baja">Baja (Consulta/Requerimiento)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row g-3 mb-4">
-                    <div class="col-md-6">
-                        <label for="moduloAfectado" class="form-label fw-bold">Módulo o Sistema Afectado <span class="text-danger">*</span></label>
-                        <select class="form-select" id="moduloAfectado" required>
-                            <option value="" selected disabled>Seleccione el módulo...</option>
-                            <option value="modulo_a">Módulo de Transacciones (A)</option>
-                            <option value="modulo_b">Módulo de Reportes (B)</option>
-                            <option value="modulo_c">Módulo de Administración (C)</option>
-                            <option value="otro">Otro / General</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="tipoProblema" class="form-label fw-bold">Tipo de Solicitud <span class="text-danger">*</span></label>
-                        <select class="form-select" id="tipoProblema" required>
-                            <option value="" selected disabled>Seleccione el tipo...</option>
-                            <option value="incidente">Incidente/Error</option>
-                            <option value="consulta">Consulta/Duda Técnica</option>
-                            <option value="requerimiento">Requerimiento de Mejora</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <label for="descripcion" class="form-label fw-bold">Descripción Detallada del Problema <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="descripcion" rows="6" placeholder="Describa el problema, incluyendo pasos para replicarlo, mensajes de error y el impacto en su operación." required></textarea>
-                    <div class="form-text">Mínimo 50 caracteres. Máximo 1000 caracteres.</div>
-                </div>
-
-                <div class="mb-5">
-                    <label for="adjuntos" class="form-label fw-bold">Adjuntar Archivos (Opcional)</label>
-                    <input class="form-control" type="file" id="adjuntos" multiple accept=".pdf, .jpg, .png, .zip">
-                    <div class="form-text">Adjunte capturas de pantalla, logs o documentos relevantes (Máx. 5 archivos, 10MB c/u).</div>
-                </div>
-
-                <div class="d-flex justify-content-end gap-3 pt-3 border-top">
-                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="window.history.back()">
-                        <i class="bi bi-x-circle"></i> Cancelar
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-lg">
-                        <i class="bi bi-send-fill"></i> Enviar Ticket
-                    </button>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
-
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-            crossorigin="anonymous">
-    </script>
-    
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); color: white;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="bi bi-check-circle-fill text-success"></i> Ticket Creado Exitosamente</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Su ticket ha sido registrado correctamente con el ID: <strong id="ticketId">NOV-XXXX</strong></p>
+                    <p>Recibirá una notificación por correo con los detalles y podrá dar seguimiento desde el portal.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <a href="/cliente/dashboard" class="btn btn-nova btn-nova-primary">Ir al Dashboard</a>
+                    <a href="/cliente/lista-tickets" class="btn btn-nova btn-nova-success">Ver Mis Tickets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('ticketRegistrationForm').addEventListener('submit', function(event) {
-            if (!this.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
+        // Req 4: Información de Prioridad
+        function updatePriorityInfo() {
+            const select = document.getElementById('prioridad');
+            const info = document.getElementById('priorityInfo');
+            const infoText = info.querySelector('small');
+            
+            const messages = {
+                'critica': '⚠️ <strong>CRÍTICA:</strong> Su ticket será atendido de inmediato. Tiempo de respuesta: 15 minutos, resolución objetivo: 1 hora.',
+                'alta': '🔥 <strong>ALTA:</strong> Su ticket tiene prioridad alta. Tiempo de respuesta: 1 hora, resolución objetivo: 4 horas.',
+                'media': '📋 <strong>MEDIA:</strong> Su ticket será atendido en orden de llegada. Tiempo de respuesta: 4 horas, resolución objetivo: 8 horas.',
+                'baja': '📝 <strong>BAJA:</strong> Su consulta será atendida dentro del próximo día hábil. Tiempo de respuesta: 24 horas.'
+            };
+            
+            if (select.value) {
+                infoText.innerHTML = messages[select.value];
+                info.style.display = 'block';
             } else {
-                alert('Ticket enviado con éxito. Serás notificado por correo sobre el seguimiento.');
-                // Aquí iría el código para enviar los datos al servidor.
+                info.style.display = 'none';
             }
-            this.classList.add('was-validated');
-        }, false);
+        }
+
+        // Req 3: Validación del Formulario (DQA)
+        function validateForm(e) {
+            e.preventDefault();
+            
+            const asunto = document.getElementById('asunto').value.trim();
+            const tipo = document.getElementById('tipoSolicitud').value;
+            const modulo = document.getElementById('moduloAfectado').value;
+            const prioridad = document.getElementById('prioridad').value;
+            const descripcion = document.getElementById('descripcion').value.trim();
+            
+            // Validaciones
+            if (!asunto || asunto.length < 10) {
+                alert('El asunto debe tener al menos 10 caracteres');
+                return false;
+            }
+            
+            if (!tipo || !modulo || !prioridad) {
+                alert('Por favor complete todos los campos obligatorios');
+                return false;
+            }
+            
+            if (descripcion.length < 50) {
+                alert('La descripción debe tener al menos 50 caracteres para una mejor atención');
+                return false;
+            }
+            
+            // Simular creación de ticket (Req 2: ID Único)
+            const ticketId = 'NOV-' + Math.floor(Math.random() * 9000 + 1000);
+            document.getElementById('ticketId').textContent = ticketId;
+            
+            // Mostrar modal de confirmación
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            modal.show();
+            
+            // Limpiar formulario
+            document.getElementById('ticketForm').reset();
+            updatePriorityInfo();
+            
+            return false;
+        }
+
+        // Validación en tiempo real del contador de caracteres
+        document.getElementById('descripcion').addEventListener('input', function() {
+            const length = this.value.length;
+            const parent = this.parentElement;
+            const small = parent.querySelector('small');
+            
+            if (length < 50) {
+                small.textContent = `Faltan ${50 - length} caracteres (mínimo 50)`;
+                small.style.color = '#f2994a';
+            } else {
+                small.textContent = `${length} / 2000 caracteres`;
+                small.style.color = 'rgba(255, 255, 255, 0.7)';
+            }
+        });
     </script>
 </body>
 </html>

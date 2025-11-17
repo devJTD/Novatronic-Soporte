@@ -3,223 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novatronic - Detalle Ticket NOV-1025</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-          crossorigin="anonymous">
+    <title>Novatronic - Detalle Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <link rel="stylesheet" href="/css/dashboard-cliente-style.css"> 
-    <link rel="stylesheet" href="/css/detalle-cliente-style.css"> 
+    <link rel="stylesheet" href="/css/nova-styles.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
-            
             <a class="navbar-brand d-flex align-items-center" href="/cliente/dashboard">
-                <img src="/img/logo.png" alt="Logo Novatronic Soporte" class="navbar-logo"> 
-                <span class="badge bg-info text-dark ms-2">CLIENTE</span>
+                <img src="/img/logo.png" alt="Novatronic">
+                <span class="badge bg-info ms-2">CLIENTE</span>
             </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavClient" 
-                    aria-controls="navbarNavClient" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavClient">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cliente/dashboard">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cliente/registro-ticket">
-                            <i class="bi bi-plus-circle"></i> Nuevo Ticket
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/cliente/lista-tickets">
-                            <i class="bi bi-list-task"></i> Mis Tickets
-                        </a>
-                    </li>
-
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/cliente/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cliente/registro-ticket"><i class="bi bi-plus-circle"></i> Nuevo Ticket</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/cliente/lista-tickets"><i class="bi bi-list-task"></i> Mis Tickets</a></li>
                 </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-white me-3"><i class="bi bi-building"></i> Banco Central</span>
+                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                </div>
             </div>
-            
-            <div class="d-none d-lg-block ms-auto"> 
-                 <a class="btn btn-outline-light btn-logout" href="/login">
-                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
-                </a>
-            </div>
-            
         </div>
     </nav>
 
     <div class="main-content">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/cliente/dashboard">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="/cliente/lista-tickets">Mis Tickets</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Detalle NOV-1025</li>
+        <!-- Breadcrumb -->
+        <nav class="mb-4">
+            <ol class="breadcrumb" style="background: transparent;">
+                <li class="breadcrumb-item"><a href="/cliente/dashboard" class="text-white">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/cliente/lista-tickets" class="text-white">Mis Tickets</a></li>
+                <li class="breadcrumb-item active text-glass-muted">NOV-3401</li>
             </ol>
         </nav>
-        
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="mb-0 text-primary">
-                <i class="bi bi-headset"></i> Ticket NOV-1025 
-                <span class="badge bg-danger ms-2 priority-badge-lg">CRÍTICA</span>
-                <span class="badge bg-warning text-dark ms-2 status-badge-lg">PENDIENTE DE CLIENTE</span>
-            </h1>
-            <a href="/cliente/lista-tickets" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left"></i> Volver al Listado
+
+        <!-- Header del Ticket -->
+        <div class="flex justify-between items-start mb-6">
+            <div>
+                <h1 class="text-4xl font-bold text-white mb-3">
+                    <i class="bi bi-ticket-detailed-fill"></i> Ticket NOV-3401
+                </h1>
+                <h2 class="text-2xl text-glass-muted mb-3">Fallo en módulo de reportes - Error 503</h2>
+                <div class="flex gap-3">
+                    <span class="badge-modern badge-critica">CRÍTICA</span>
+                    <span class="badge-modern" style="background: var(--gradient-warning); color: white;">PENDIENTE CLIENTE</span>
+                </div>
+            </div>
+            <a href="/cliente/lista-tickets" class="btn btn-nova" style="background: rgba(255,255,255,0.1); color: white;">
+                <i class="bi bi-arrow-left"></i> Volver
             </a>
         </div>
-        
-        <h2 class="h4 mb-4 text-muted">Fallo de integración en módulo de Reportes</h2>
-        
-        <div class="row">
+
+        <div class="row g-4">
+            <!-- Columna Principal -->
             <div class="col-lg-8">
-                
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0"><i class="bi bi-file-earmark-text"></i> Descripción Inicial</h5>
+                <!-- Descripción Original -->
+                <div class="card-glass mb-4">
+                    <div class="card-glass-header">
+                        <h3 class="text-xl font-bold mb-0"><i class="bi bi-file-earmark-text"></i> Descripción Original</h3>
                     </div>
-                    <div class="card-body">
-                        <p class="mb-3 fw-bold">Asunto:</p>
-                        <p class="mb-3">Fallo de integración en módulo de Reportes. Desde la última actualización, el servicio API v3 devuelve error 503 en los endpoints de facturación.</p>
-                        <p class="small text-muted mb-0 border-top pt-2">
-                            <span class="fw-bold">Origen:</span> Portal Cliente | 
-                            <span class="fw-bold">Creado:</span> 14/10/2025 09:00
-                        </p>
+                    <div class="card-glass-body">
+                        <p class="mb-3"><strong>Reportado por:</strong> María González (Banco Central)</p>
+                        <p class="mb-3">Desde la última actualización del sistema, el módulo de reportes arroja un error 503 Service Unavailable al intentar generar reportes mensuales. Esto está afectando gravemente nuestras operaciones de cierre de mes.</p>
+                        <div class="text-sm text-glass-muted">
+                            <i class="bi bi-calendar3"></i> Creado: 15/11/2025 09:30 AM | 
+                            <i class="bi bi-globe"></i> Origen: Portal Web
+                        </div>
                     </div>
                 </div>
 
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0"><i class="bi bi-chat-dots"></i> Historial de Comunicación (Trazabilidad)</h5>
+                <!-- Req 7 y 8: Timeline con Trazabilidad y Chat (CDT) -->
+                <div class="card-glass mb-4">
+                    <div class="card-glass-header bg-gradient-primary">
+                        <h3 class="text-xl font-bold mb-0"><i class="bi bi-chat-dots"></i> Historial de Comunicación</h3>
                     </div>
-                    <div class="card-body timeline-container">
-                        
-                        <div class="timeline-client-item agent-message">
-                            <p class="small text-muted mb-0">14/10/2025 11:30 | <span class="fw-bold">Técnico (Juan Pérez)</span></p>
-                            <p class="mb-1 fw-bold text-danger">SOLICITUD DE INFORMACIÓN ADICIONAL:</p>
-                            <div class="message-bubble alert alert-warning py-2 px-3 small d-inline-block">
-                                Necesitamos que nos confirmen si el error 503 persiste al utilizar una clave de API diferente. Por favor, adjunte el log de la última petición fallida.
+                    <div class="card-glass-body">
+                        <div class="timeline-modern">
+                            <!-- Mensaje del Agente (Solicitud de Info) -->
+                            <div class="timeline-item-modern agent">
+                                <div class="text-sm text-glass-muted mb-2">
+                                    <i class="bi bi-clock"></i> 15/11/2025 11:45 AM | 
+                                    <strong>Técnico Juan Pérez</strong>
+                                </div>
+                                <div class="timeline-bubble">
+                                    <div class="bg-warning bg-opacity-10 border border-warning border-opacity-50 rounded-lg p-3 mb-2">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <i class="bi bi-info-circle-fill text-warning"></i>
+                                            <strong class="text-warning">SOLICITUD DE INFORMACIÓN</strong>
+                                        </div>
+                                        <p class="mb-0">Necesitamos que nos proporcione el log completo del error. También confirme si el problema persiste al usar credenciales de administrador.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="timeline-client-item client-message">
-                            <p class="small text-muted mb-0">14/10/2025 10:05 | <span class="fw-bold text-primary">Usted (Banco Central)</span></p>
-                            <div class="message-bubble alert alert-primary py-2 px-3 small d-inline-block">
-                                Adjunto la captura del error que muestra nuestro sistema al intentar acceder al servicio API de facturación.
+                            <!-- Mensaje del Cliente -->
+                            <div class="timeline-item-modern client">
+                                <div class="text-sm text-glass-muted mb-2">
+                                    <i class="bi bi-clock"></i> 15/11/2025 10:15 AM | 
+                                    <strong>Usted (Banco Central)</strong>
+                                </div>
+                                <div class="timeline-bubble">
+                                    <p class="mb-2">Adjunto capturas del error. El problema ocurre con todos los usuarios.</p>
+                                    <div class="flex gap-2">
+                                        <span class="badge-modern badge-media">
+                                            <i class="bi bi-paperclip"></i> error_screenshot.png
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="small mt-1">
-                                <i class="bi bi-paperclip me-1"></i> 1 archivo adjunto (<a href="#" class="link-primary">error_api.png</a>)
+
+                            <!-- Evento del Sistema -->
+                            <div class="timeline-item-modern system">
+                                <div class="text-sm text-glass-muted mb-2">
+                                    <i class="bi bi-clock"></i> 15/11/2025 09:45 AM | 
+                                    <strong>Sistema Novatronic</strong>
+                                </div>
+                                <div class="timeline-bubble">
+                                    <p class="mb-0 text-sm">Ticket clasificado como <strong>Incidente - Módulo Reportes</strong>. Prioridad: <strong>CRÍTICA</strong>. Asignado a: <strong>Juan Pérez</strong> (Grupo Desarrollo).</p>
+                                </div>
+                            </div>
+
+                            <!-- Creación -->
+                            <div class="timeline-item-modern system">
+                                <div class="text-sm text-glass-muted mb-2">
+                                    <i class="bi bi-clock"></i> 15/11/2025 09:30 AM | 
+                                    <strong>Sistema</strong>
+                                </div>
+                                <div class="timeline-bubble">
+                                    <p class="mb-0 text-sm"><i class="bi bi-plus-circle"></i> Ticket creado</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="timeline-client-item system-event">
-                            <p class="small text-muted mb-0">14/10/2025 09:15 | <span class="fw-bold text-success">Sistema Novatronic</span></p>
-                            <p class="mb-0 small">Ticket clasificado como <span class="fw-bold">Incidente - API/Integración</span> (Prioridad: Crítica). Asignado a: <span class="fw-bold">Juan Pérez</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Req 8: Responder (Chat Integrado) -->
+                <div class="card-glass">
+                    <div class="card-glass-header bg-gradient-success">
+                        <h3 class="text-xl font-bold mb-0"><i class="bi bi-reply-fill"></i> Responder al Técnico</h3>
+                    </div>
+                    <div class="card-glass-body">
+                        <p class="text-glass-muted mb-3">Su respuesta será enviada al técnico asignado y se registrará en el historial del ticket.</p>
+                        <textarea class="form-glass w-full mb-3" rows="4" placeholder="Escriba su respuesta o proporcione la información solicitada..."></textarea>
+                        <div class="mb-3">
+                            <label class="form-label-glass"><i class="bi bi-paperclip"></i> Adjuntar archivos</label>
+                            <input type="file" class="form-glass w-full" multiple>
                         </div>
-                        
-                        <div class="timeline-client-item system-event">
-                            <p class="small text-muted mb-0">14/10/2025 09:00 | <span class="fw-bold text-secondary">Sistema</span></p>
-                            <p class="mb-0 small">Ticket Creado.</p>
-                        </div>
-                        
+                        <button class="btn btn-nova btn-nova-success btn-lg w-full">
+                            <i class="bi bi-send-fill"></i> Enviar Respuesta
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- Sidebar -->
             <div class="col-lg-4">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="bi bi-info-circle"></i> Estado y Fechas</h5>
+                <!-- Metadatos del Ticket -->
+                <div class="card-glass sticky-card mb-4">
+                    <div class="card-glass-header bg-gradient-primary">
+                        <h3 class="text-lg font-bold mb-0"><i class="bi bi-info-circle"></i> Información del Ticket</h3>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush small mb-4 metadata-list">
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="fw-bold">Estado Actual:</span>
-                                <span class="fw-bold text-warning">Pendiente de Cliente</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Prioridad Asignada:
-                                <span class="badge bg-danger">CRÍTICA</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Técnico Asignado:
-                                <span class="fw-bold">Juan Pérez</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Categoría (OPD):
-                                <span class="fw-bold">API / Integración</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-success">
-                                <span class="fw-bold">Tiempo Límite SLA (SD):</span>
-                                <span class="fw-bold">3 Horas (en pausa)</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalCerrar">
-                                <i class="bi bi-check-circle-fill"></i> Marcar como Resuelto
-                            </button>
+                    <div class="card-glass-body">
+                        <div class="space-y-3">
+                            <div class="p-3 rounded-lg" style="background: rgba(255,255,255,0.05);">
+                                <div class="text-xs text-glass-muted mb-1">Estado</div>
+                                <div class="font-semibold text-warning">
+                                    <i class="bi bi-chat-left-dots-fill"></i> Pendiente de Cliente
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-lg" style="background: rgba(255,255,255,0.05);">
+                                <div class="text-xs text-glass-muted mb-1">Prioridad</div>
+                                <div><span class="badge-modern badge-critica">CRÍTICA</span></div>
+                            </div>
+                            <div class="p-3 rounded-lg" style="background: rgba(255,255,255,0.05);">
+                                <div class="text-xs text-glass-muted mb-1">Técnico Asignado</div>
+                                <div class="font-semibold text-white">Juan Pérez</div>
+                            </div>
+                            <div class="p-3 rounded-lg" style="background: rgba(255,255,255,0.05);">
+                                <div class="text-xs text-glass-muted mb-1">Categoría</div>
+                                <div class="font-semibold text-white">Módulo de Reportes</div>
+                            </div>
+                            <div class="p-3 rounded-lg" style="background: rgba(56, 239, 125, 0.1); border: 1px solid rgba(56, 239, 125, 0.3);">
+                                <div class="text-xs text-glass-muted mb-1">SLA - Tiempo Límite</div>
+                                <div class="font-semibold text-success">
+                                    <i class="bi bi-clock-fill"></i> 1 hora (En pausa)
+                                </div>
+                                <small class="text-xs">El contador de SLA se pausó al solicitar su respuesta</small>
+                            </div>
                         </div>
+
+                        <hr class="border-white border-opacity-20 my-4">
+
+                        <button class="btn btn-nova btn-nova-success w-full" data-bs-toggle="modal" data-bs-target="#resolverModal">
+                            <i class="bi bi-check-circle-fill"></i> Marcar como Resuelto
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="card shadow response-card mt-4">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0"><i class="bi bi-reply-all-fill"></i> Responder al Técnico</h5>
-            </div>
-            <div class="card-body">
-                <p class="small text-muted">Su respuesta será enviada al agente asignado (Juan Pérez) y reanudará el SLA si estaba en espera.</p>
-                <textarea class="form-control mb-3" rows="4" placeholder="Escriba su respuesta o provea la información solicitada aquí..."></textarea>
-                
-                <div class="mb-3">
-                    <label for="adjuntoRespuesta" class="form-label small fw-bold"><i class="bi bi-paperclip"></i> Adjuntar Archivo</label>
-                    <input class="form-control" type="file" id="adjuntoRespuesta">
-                </div>
-                
-                <button class="btn btn-success btn-lg">
-                    <i class="bi bi-send-fill"></i> Enviar Respuesta
-                </button>
-            </div>
-        </div>
-        
-    </div>
-    
-    <div class="modal fade" id="modalCerrar" tabindex="-1" aria-labelledby="modalCerrarLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-success text-white">
-            <h5 class="modal-title" id="modalCerrarLabel"><i class="bi bi-check-circle"></i> Marcar como Resuelto</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Al confirmar, este ticket se marcará como resuelto y se enviará una notificación al técnico para su cierre final.</p>
-            <p class="fw-bold">¿Desea confirmar que el problema ha sido solucionado o que su requerimiento está completo?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mantener Abierto</button>
-            <button type="button" class="btn btn-success">Confirmar Solución</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-            crossorigin="anonymous">
-    </script>
+    <!-- Modal Resolver -->
+    <div class="modal fade" id="resolverModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); color: white;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="bi bi-check-circle text-success"></i> Marcar como Resuelto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Confirma que el problema ha sido solucionado satisfactoriamente?</p>
+                    <p class="text-sm text-glass-muted">El técnico recibirá una notificación para proceder con el cierre oficial del ticket.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-nova" style="background: rgba(255,255,255,0.1); color: white;" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-nova btn-nova-success">Confirmar Solución</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
