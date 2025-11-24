@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/nova-styles.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
@@ -21,14 +23,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/admin/tickets-revisados"><i class="bi bi-list-check"></i> Gestión Tickets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/reportes"><i class="bi bi-graph-up"></i> Reportes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/base-conocimiento"><i class="bi bi-book"></i> Base Conocimiento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/dashboard"><i class="bi bi-speedometer2"></i>
+                            Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/tickets-revisados"><i
+                                class="bi bi-list-check"></i> Gestión Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/reportes"><i class="bi bi-graph-up"></i>
+                            Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/base-conocimiento"><i class="bi bi-book"></i>
+                            Base Conocimiento</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <span class="text-white me-3"><i class="bi bi-person-circle"></i> Admin</span>
-                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                    <a class="btn btn-sm btn-nova btn-nova-danger" href="/login"><i class="bi bi-box-arrow-right"></i>
+                        Salir</a>
                 </div>
             </div>
         </div>
@@ -37,7 +44,8 @@
     <div class="main-content">
         <div class="flex justify-between items-center mb-6">
             <div>
-                <h1 class="text-4xl font-bold text-white mb-2"><i class="bi bi-kanban"></i> Gestión Global de Tickets</h1>
+                <h1 class="text-4xl font-bold text-white mb-2"><i class="bi bi-kanban"></i> Gestión Global de Tickets
+                </h1>
                 <p class="text-glass-muted">Vista completa de todos los tickets del sistema</p>
             </div>
             <a href="/admin/registro-ticket" class="btn btn-nova btn-nova-primary btn-lg">
@@ -52,39 +60,48 @@
             </div>
             <div class="card-glass-body">
                 <div class="flex gap-2 overflow-x-auto pb-2">
-                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0" style="background: rgba(255,255,255,0.1);">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--gradient-warning);">1</div>
+                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0"
+                        style="background: rgba(255,255,255,0.1);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                            style="background: var(--gradient-warning);">1</div>
                         <div>
                             <div class="font-bold text-white">Registrado</div>
                             <div class="text-xs text-glass-muted">12 tickets</div>
                         </div>
                     </div>
                     <i class="bi bi-arrow-right text-2xl text-white"></i>
-                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0" style="background: rgba(255,255,255,0.1);">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--gradient-info);">2</div>
+                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0"
+                        style="background: rgba(255,255,255,0.1);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                            style="background: var(--gradient-info);">2</div>
                         <div>
                             <div class="font-bold text-white">Clasificado</div>
                             <div class="text-xs text-glass-muted">8 tickets</div>
                         </div>
                     </div>
                     <i class="bi bi-arrow-right text-2xl text-white"></i>
-                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0" style="background: rgba(255,255,255,0.1);">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--gradient-primary);">3</div>
+                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0"
+                        style="background: rgba(255,255,255,0.1);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                            style="background: var(--gradient-primary);">3</div>
                         <div>
                             <div class="font-bold text-white">En Proceso</div>
                             <div class="text-xs text-glass-muted">45 tickets</div>
                         </div>
                     </div>
                     <i class="bi bi-arrow-right text-2xl text-white"></i>
-                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0" style="background: rgba(255,255,255,0.1);">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--gradient-success);">4</div>
+                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0"
+                        style="background: rgba(255,255,255,0.1);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                            style="background: var(--gradient-success);">4</div>
                         <div>
                             <div class="font-bold text-white">Resuelto</div>
                             <div class="text-xs text-glass-muted">234 tickets</div>
                         </div>
                     </div>
                     <i class="bi bi-arrow-right text-2xl text-white"></i>
-                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0" style="background: rgba(255,255,255,0.1);">
+                    <div class="flex items-center gap-2 p-3 rounded-lg flex-shrink-0"
+                        style="background: rgba(255,255,255,0.1);">
                         <div class="w-10 h-10 rounded-full flex items-center justify-center bg-secondary">5</div>
                         <div>
                             <div class="font-bold text-white">Cerrado</div>
@@ -101,7 +118,8 @@
                 <div class="row g-3">
                     <div class="col-md-3">
                         <label class="form-label-glass">Buscar Ticket</label>
-                        <input type="text" class="form-glass w-full" id="searchTicket" placeholder="ID, cliente o asunto...">
+                        <input type="text" class="form-glass w-full" id="searchTicket"
+                            placeholder="ID, cliente o asunto...">
                     </div>
                     <div class="col-md-2">
                         <label class="form-label-glass">Estado</label>
@@ -162,7 +180,9 @@
                     <i class="bi bi-exclamation-triangle-fill text-4xl"></i>
                     <div>
                         <h4 class="font-bold text-xl mb-1">Alertas Activas de SLA</h4>
-                        <p class="mb-0"><strong>3 tickets</strong> están en riesgo crítico de incumplir el SLA. <strong>7 tickets</strong> en estado de advertencia.</p>
+                        <p class="mb-0"><strong>3 tickets</strong> están en riesgo crítico de incumplir el SLA.
+                            <strong>7 tickets</strong> en estado de advertencia.
+                        </p>
                     </div>
                 </div>
                 <button class="btn btn-nova btn-nova-danger" onclick="filtrarCriticos()">
@@ -207,20 +227,21 @@
                         <!-- Ticket SLA Crítico -->
                         <tr class="bg-danger bg-opacity-10" data-prioridad="critica" data-estado="proceso">
                             <td><input type="checkbox" class="form-check-input"></td>
-                            <td><strong class="text-white">NOV-3421</strong></td>
+                            <td><strong class="text">NOV-3421</strong></td>
                             <td>Banco Central</td>
                             <td>
-                                <div class="font-semibold text-white">Caída total sistema pagos</div>
+                                <div class="font-semibold text">Caída total sistema pagos</div>
                                 <div class="text-xs text-glass-muted">Sistema productivo inactivo</div>
                             </td>
                             <td><span class="badge-modern badge-critica">CRÍTICA</span></td>
                             <td><span class="badge-modern badge-media">EN PROCESO</span></td>
                             <td>
-                                <div class="text-white">Juan Pérez</div>
+                                <div class="text">Juan Pérez</div>
                                 <div class="text-xs text-glass-muted">Infraestructura</div>
                             </td>
                             <td>
-                                <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                <span class="badge-modern"
+                                    style="background: rgba(255,255,255,0.1); color: rgb(0, 0, 0);">
                                     Incidente - Pagos
                                 </span>
                             </td>
@@ -241,20 +262,21 @@
                         <!-- Ticket SLA Advertencia -->
                         <tr class="bg-warning bg-opacity-10" data-prioridad="alta" data-estado="proceso">
                             <td><input type="checkbox" class="form-check-input"></td>
-                            <td><strong class="text-white">NOV-3418</strong></td>
+                            <td><strong class="text">NOV-3418</strong></td>
                             <td>Financiera Alfa</td>
                             <td>
-                                <div class="font-semibold text-white">Error sincronización BD</div>
+                                <div class="font-semibold text">Error sincronización BD</div>
                                 <div class="text-xs text-glass-muted">Replicación fallida</div>
                             </td>
                             <td><span class="badge-modern badge-alta">ALTA</span></td>
                             <td><span class="badge-modern badge-media">EN PROCESO</span></td>
                             <td>
-                                <div class="text-white">Laura Gómez</div>
+                                <div class="text">Laura Gómez</div>
                                 <div class="text-xs text-glass-muted">Base de Datos</div>
                             </td>
                             <td>
-                                <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                <span class="badge-modern"
+                                    style="background: rgba(255,255,255,0.1); color: rgb(0, 0, 0);">
                                     Incidente - DB
                                 </span>
                             </td>
@@ -266,7 +288,8 @@
                             </td>
                             <td>3h 18min</td>
                             <td>
-                                <a href="/admin/detalles-ticket/NOV-3418" class="btn btn-sm btn-nova" style="background: var(--gradient-warning); color: white;">
+                                <a href="/admin/detalles-ticket/NOV-3418" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-warning); color: rgb(0, 0, 0);">
                                     <i class="bi bi-arrow-right-circle"></i>
                                 </a>
                             </td>
@@ -275,20 +298,21 @@
                         <!-- Ticket Normal -->
                         <tr data-prioridad="media" data-estado="proceso">
                             <td><input type="checkbox" class="form-check-input"></td>
-                            <td><strong class="text-white">NOV-3415</strong></td>
+                            <td><strong class="text">NOV-3415</strong></td>
                             <td>Grupo Innova</td>
                             <td>
-                                <div class="font-semibold text-white">Optimización reportes</div>
+                                <div class="font-semibold text">Optimización reportes</div>
                                 <div class="text-xs text-glass-muted">Performance lenta</div>
                             </td>
                             <td><span class="badge-modern badge-media">MEDIA</span></td>
                             <td><span class="badge-modern badge-media">EN PROCESO</span></td>
                             <td>
-                                <div class="text-white">Pedro Ríos</div>
+                                <div class="text">Pedro Ríos</div>
                                 <div class="text-xs text-glass-muted">Desarrollo</div>
                             </td>
                             <td>
-                                <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                <span class="badge-modern"
+                                    style="background: rgba(255,255,255,0.1); color: rgb(0, 0, 0);">
                                     Requerimiento - BI
                                 </span>
                             </td>
@@ -300,7 +324,8 @@
                             </td>
                             <td>1h 40min</td>
                             <td>
-                                <a href="/admin/detalles-ticket/NOV-3415" class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;">
+                                <a href="/admin/detalles-ticket/NOV-3415" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
                                     <i class="bi bi-arrow-right-circle"></i>
                                 </a>
                             </td>
@@ -309,20 +334,23 @@
                         <!-- Ticket Pendiente Cliente -->
                         <tr data-prioridad="alta" data-estado="pendiente-cliente">
                             <td><input type="checkbox" class="form-check-input"></td>
-                            <td><strong class="text-white">NOV-3412</strong></td>
+                            <td><strong class="text">NOV-3412</strong></td>
                             <td>Banco Central</td>
                             <td>
-                                <div class="font-semibold text-white">Fallo módulo reportes</div>
+                                <div class="font-semibold text">Fallo módulo reportes</div>
                                 <div class="text-xs text-glass-muted">Esperando logs del cliente</div>
                             </td>
                             <td><span class="badge-modern badge-alta">ALTA</span></td>
-                            <td><span class="badge-modern" style="background: var(--gradient-warning); color: white;">PENDIENTE CLIENTE</span></td>
+                            <td><span class="badge-modern"
+                                    style="background: var(--gradient-warning); color: white;">PENDIENTE CLIENTE</span>
+                            </td>
                             <td>
-                                <div class="text-white">Juan Pérez</div>
+                                <div class="text">Juan Pérez</div>
                                 <div class="text-xs text-glass-muted">Desarrollo</div>
                             </td>
                             <td>
-                                <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                <span class="badge-modern"
+                                    style="background: rgba(255,255,255,0.1); color: rgb(0, 0, 0);">
                                     Incidente - Reportes
                                 </span>
                             </td>
@@ -334,7 +362,8 @@
                             </td>
                             <td>2h 15min</td>
                             <td>
-                                <a href="/admin/detalles-ticket/NOV-3412" class="btn btn-sm btn-nova" style="background: var(--gradient-info); color: white;">
+                                <a href="/admin/detalles-ticket/NOV-3412" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
                                     <i class="bi bi-arrow-right-circle"></i>
                                 </a>
                             </td>
@@ -343,20 +372,22 @@
                         <!-- Ticket Clasificado (Req 6: Asignación Automática pendiente) -->
                         <tr data-prioridad="media" data-estado="clasificado">
                             <td><input type="checkbox" class="form-check-input"></td>
-                            <td><strong class="text-white">NOV-3410</strong></td>
+                            <td><strong class="text">NOV-3410</strong></td>
                             <td>Financiera Alfa</td>
                             <td>
-                                <div class="font-semibold text-white">Consulta sobre API v3</div>
+                                <div class="font-semibold text">Consulta sobre API v3</div>
                                 <div class="text-xs text-glass-muted">Integración endpoints</div>
                             </td>
                             <td><span class="badge-modern badge-media">MEDIA</span></td>
-                            <td><span class="badge-modern" style="background: var(--gradient-info);">CLASIFICADO</span></td>
+                            <td><span class="badge-modern" style="background: var(--gradient-info);">CLASIFICADO</span>
+                            </td>
                             <td>
                                 <div class="text-warning">Sin asignar</div>
                                 <div class="text-xs text-glass-muted">Asignación automática</div>
                             </td>
                             <td>
-                                <span class="badge-modern" style="background: rgba(255,255,255,0.1); color: white;">
+                                <span class="badge-modern"
+                                    style="background: rgba(255,255,255,0.1); color: rgb(0, 0, 0);">
                                     Consulta - API
                                 </span>
                             </td>
@@ -368,7 +399,8 @@
                             </td>
                             <td>15 min</td>
                             <td>
-                                <button class="btn btn-sm btn-nova btn-nova-primary" onclick="asignarRapido('NOV-3410')">
+                                <button class="btn btn-sm btn-nova btn-nova-primary"
+                                    onclick="asignarRapido('NOV-3410')">
                                     <i class="bi bi-person-plus"></i> Asignar
                                 </button>
                             </td>
@@ -381,7 +413,8 @@
             <div class="card-glass-body border-t border-white border-opacity-10">
                 <div class="flex justify-between items-center">
                     <div>
-                        <button class="btn btn-sm btn-nova" style="background: rgba(255,255,255,0.1); color: white;" disabled id="btnAccionesMasivas">
+                        <button class="btn btn-sm btn-nova" style="background: rgba(255,255,255,0.1); color: white;"
+                            disabled id="btnAccionesMasivas">
                             <i class="bi bi-gear"></i> Acciones Masivas (<span id="selectedCount">0</span>)
                         </button>
                     </div>
@@ -396,7 +429,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Selección múltiple
-        document.getElementById('selectAll').addEventListener('change', function() {
+        document.getElementById('selectAll').addEventListener('change', function () {
             const checkboxes = document.querySelectorAll('#mainTable tbody input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = this.checked);
             actualizarSeleccion();
@@ -430,10 +463,10 @@
         }
 
         // Búsqueda en tiempo real
-        document.getElementById('searchTicket').addEventListener('input', function() {
+        document.getElementById('searchTicket').addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase();
             const rows = document.querySelectorAll('#mainTable tbody tr');
-            
+
             rows.forEach(row => {
                 const text = row.textContent.toLowerCase();
                 row.style.display = text.includes(searchTerm) ? '' : 'none';
@@ -441,4 +474,5 @@
         });
     </script>
 </body>
+
 </html>

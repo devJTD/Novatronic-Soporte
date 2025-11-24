@@ -19,11 +19,11 @@
     /* Azul Medianoche */
 
     /* Gradientes */
-    --gradient-primary: linear-gradient(135deg, #00ffff 0%, #33ccff 100%);
-    --gradient-success: linear-gradient(135deg, #00ff99 0%, #33ccff 100%);
-    --gradient-danger: linear-gradient(135deg, #ff3366 0%, #ff0033 100%);
-    --gradient-warning: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
-    --gradient-info: linear-gradient(135deg, #33ccff 0%, #00ffff 100%);
+    --gradient-primary: linear-gradient(135deg, #588c8c 0%, #3d8ea9 100%);
+    --gradient-success: linear-gradient(135deg, #4f9f7f 0%, #43859b 100%);
+    --gradient-danger: linear-gradient(135deg, #a84b62 0%, #9e3f52 100%);
+    --gradient-warning: linear-gradient(135deg, #a69450 0%, #a1804e 100%);
+    --gradient-info: linear-gradient(135deg, #386674 0%, #00ffff 100%);
 
     /* Glassmorphism */
     --glass-bg: rgba(0, 31, 63, 0.6);
