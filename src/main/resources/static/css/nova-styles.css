@@ -7,31 +7,36 @@
 
 :root {
     /* Colores principales */
-    --nova-primary: #667eea;
-    --nova-secondary: #764ba2;
-    --nova-accent: #f093fb;
-    --nova-dark: #1a1d29;
-    --nova-darker: #0f111a;
-    
+    --nova-primary: #00ffff;
+    /* Azul Eléctrico */
+    --nova-secondary: #33ccff;
+    /* Azul Claro Neón */
+    --nova-accent: #cc33ff;
+    /* Púrpura/Magenta */
+    --nova-dark: #001f3f;
+    /* Azul Oscuro Profundo */
+    --nova-darker: #00152a;
+    /* Azul Medianoche */
+
     /* Gradientes */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-    --gradient-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
-    --gradient-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
-    --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    
+    --gradient-primary: linear-gradient(135deg, #00ffff 0%, #33ccff 100%);
+    --gradient-success: linear-gradient(135deg, #00ff99 0%, #33ccff 100%);
+    --gradient-danger: linear-gradient(135deg, #ff3366 0%, #ff0033 100%);
+    --gradient-warning: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+    --gradient-info: linear-gradient(135deg, #33ccff 0%, #00ffff 100%);
+
     /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    
+    --glass-bg: rgba(0, 31, 63, 0.6);
+    --glass-border: rgba(0, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
     /* Efectos */
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.24);
+    --shadow-sm: 0 2px 8px rgba(0, 255, 255, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -42,8 +47,9 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #001f3f 0%, #00264d 50%, #003366 100%);
     background-attachment: fixed;
+    color: #e0e0e0;
     min-height: 100vh;
     padding-top: 80px;
     overflow-x: hidden;
@@ -57,7 +63,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -66,8 +72,15 @@ body::before {
 }
 
 @keyframes moveBackground {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(-20px, 20px); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-20px, 20px);
+    }
 }
 
 /* ============================================
@@ -141,6 +154,7 @@ body::before {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -203,7 +217,7 @@ body::before {
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     opacity: 0;
     transition: var(--transition);
 }
@@ -214,21 +228,26 @@ body::before {
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .kpi-card-3d:hover {
     transform: translateY(-12px) rotateX(5deg);
-    box-shadow: 
+    box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(102, 126, 234, 0.4);
+        0 0 40px rgba(0, 255, 255, 0.4);
 }
 
 .kpi-number {
     font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -301,10 +320,13 @@ body::before {
 }
 
 @keyframes pulse-danger {
-    0%, 100% { 
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(235, 51, 73, 0.7);
     }
-    50% { 
+
+    50% {
         box-shadow: 0 0 0 15px rgba(235, 51, 73, 0);
     }
 }
@@ -423,9 +445,9 @@ body::before {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(180deg, 
-        var(--nova-primary) 0%, 
-        var(--nova-accent) 100%);
+    background: linear-gradient(180deg,
+            var(--nova-primary) 0%,
+            var(--nova-accent) 100%);
     border-radius: 2px;
 }
 
@@ -440,6 +462,7 @@ body::before {
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -456,7 +479,7 @@ body::before {
     border-radius: 50%;
     background: white;
     border: 3px solid var(--nova-primary);
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.3);
     z-index: 2;
 }
 
@@ -532,6 +555,7 @@ body::before {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -572,15 +596,15 @@ body::before {
     .main-content {
         padding: 20px 15px;
     }
-    
+
     .kpi-number {
         font-size: 2.5rem;
     }
-    
+
     .timeline-modern {
         padding-left: 30px;
     }
-    
+
     .navbar-glass .navbar-brand img {
         height: 40px;
     }
@@ -610,7 +634,7 @@ body::before {
 }
 
 .shadow-glow {
-    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
 }
 
 /* Animación de carga */
@@ -624,5 +648,7 @@ body::before {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
