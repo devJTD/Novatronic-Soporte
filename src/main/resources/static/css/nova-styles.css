@@ -23,7 +23,7 @@
     --gradient-success: linear-gradient(135deg, #4f9f7f 0%, #43859b 100%);
     --gradient-danger: linear-gradient(135deg, #a84b62 0%, #9e3f52 100%);
     --gradient-warning: linear-gradient(135deg, #a69450 0%, #a1804e 100%);
-    --gradient-info: linear-gradient(135deg, #386674 0%, #00ffff 100%);
+    --gradient-info: linear-gradient(135deg, #65699e 0%, #00ffff 100%);
 
     /* Glassmorphism */
     --glass-bg: rgba(0, 31, 63, 0.6);

@@ -57,7 +57,7 @@
                 <div class="card-glass">
                     <div class="card-glass-body">
                         <div class="flex items-center gap-4">
-                            <div class="p-4 rounded-full" style="background: var(--gradient-info);">
+                            <div class="p-4 rounded-full" style="background: #00ffff;">
                                 <i class="bi bi-ticket-detailed-fill text-4xl text-white"></i>
                             </div>
                             <div>
@@ -182,223 +182,263 @@
                 </div>
             </div>
             <div class="table-responsive">
-                </thead>
-                <tbody>
-                    <!-- Ticket Pendiente de Cliente (Urgente) -->
-                    <tr class="bg-danger bg-opacity-10" data-estado="pendiente" data-prioridad="critica">
-                        <td><strong class="text-white">NOV-3401</strong></td>
-                        <td>
-                            <div class="font-semibold text-white">Fallo en módulo de reportes</div>
-                            <div class="text-sm text-glass-muted">API Error 503</div>
+                <table class="table table-futuristic" id="ticketsTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)" style="cursor:pointer">Ticket <i
+                                    class="bi bi-arrow-down-up text-xs"></i></th>
+                            <th onclick="sortTable(1)" style="cursor:pointer">Asunto <i
+                                    class="bi bi-arrow-down-up text-xs"></i></th>
+                            <th>Estado</th>
+                            <th>Prioridad</th>
+                            <th>Fecha</th>
+                            <th>Actualizado</th>
+                            <th>SLA</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ticket Pendiente de Cliente (Urgente) -->
+                        <tr class="bg-danger bg-opacity-10" data-estado="pendiente" data-prioridad="critica">
+                            <td><strong class="text">NOV-3401</strong></td>
+                            <td>
+                                <div class="font-semibold text">Fallo en módulo de reportes</div>
+                                <div class="text-sm text-glass-muted">API Error 503</div>
+                            </td>
+                            <td><span class="badge-modern"
+                                    style="background: var(--gradient-warning); color: white;">PENDIENTE</span></td>
+                            <td><span class="badge-modern badge-critica">CRÍTICA</span></td>
+                            <td>14/11/2025<br><small class="text-glass-muted">14:30 PM</small></td>
+                            <td>Hace 1 hora</td>
+                            <td>
+                                <div class="text-warning font-bold">
+                                    <i class="bi bi-pause-circle"></i> Pausado
+                                </div>
+                                <small class="text-xs text-glass-muted">Esperando su respuesta</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3401" class="btn btn-sm btn-nova btn-nova-danger">
+                                    <i class="bi bi-reply-fill"></i> RESPONDER
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Tickets En Proceso -->
+                        <tr data-estado="proceso" data-prioridad="alta">
+                            <td><strong class="text">NOV-3398</strong></td>
+                            <td>
+                                <div class="font-semibold text">Consulta sobre API v3</div>
+                                <div class="text-sm text-glass-muted">Integración endpoints</div>
+                            </td>
+                            <td><span class="badge-modern badge-media">EN PROCESO</span></td>
+                            <td><span class="badge-modern badge-alta">ALTA</span></td>
+                            <td>14/11/2025<br><small class="text-glass-muted">16:00 PM</small></td>
+                            <td>Ayer</td>
+                            <td>
+                                <div class="text-success font-bold">
+                                    <i class="bi bi-clock"></i> 2h 15m
+                                </div>
+                                <small class="text-xs text-glass-muted">Tiempo restante</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3398" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr data-estado="proceso" data-prioridad="media">
+                            <td><strong class="text">NOV-3390</strong></td>
+                            <td>
+                                <div class="font-semibold text">Optimización de consultas BD</div>
+                                <div class="text-sm text-glass-muted">Performance lenta</div>
+                            </td>
+                            <td><span class="badge-modern badge-media">EN PROCESO</span></td>
+                            <td><span class="badge-modern badge-media">MEDIA</span></td>
+                            <td>13/11/2025<br><small class="text-glass-muted">10:00 AM</small></td>
+                            <td>Hace 2 días</td>
+                            <td>
+                                <div class="text-success font-bold">
+                                    <i class="bi bi-clock"></i> 4h 30m
+                                </div>
+                                <small class="text-xs text-glass-muted">SLA OK</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3390" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Tickets Resueltos -->
+                        <tr data-estado="resuelto" data-prioridad="alta">
+                            <td><strong class="text">NOV-3385</strong></td>
+                            <td>
+                                <div class="font-semibold text">Error en login de usuarios</div>
+                                <div class="text-sm text-glass-muted">Autenticación fallida</div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">RESUELTO</span>
+                            </td>
+                            <td><span class="badge-modern badge-alta">ALTA</span></td>
+                            <td>12/11/2025<br><small class="text-glass-muted">14:30 PM</small></td>
+                            <td>Hace 3 días</td>
+                            <td>
+                                <div class="text-success font-bold">
+                                    <i class="bi bi-check-circle"></i> 3h 20m
+                                </div>
+                                <small class="text-xs text-glass-muted">Resuelto en tiempo</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3385" class="btn btn-sm btn-nova"
+                                    style="background: rgb(152, 195, 127); color: white;">
+                                    <i class="bi bi-eye"></i> Revisar
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr data-estado="resuelto" data-prioridad="media">
+                            <td><strong class="text">NOV-3380</strong></td>
+                            <td>
+                                <div class="font-semibold text">Problema con exportación PDF</div>
+                                <div class="text-sm text-glass-muted">Formato corrupto</div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">RESUELTO</span>
+                            </td>
+                            <td><span class="badge-modern badge-media">MEDIA</span></td>
+                            <td>10/11/2025<br><small class="text-glass-muted">09:15 AM</small></td>
+                            <td>Hace 5 días</td>
+                            <td>
+                                <div class="text-success font-bold">
+                                    <i class="bi bi-check-circle-fill"></i> 6h 45m
+                                </div>
+                                <small class="text-xs text-glass-muted">Completado</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3380" class="btn btn-sm btn-nova"
+                                    style="background: rgb(117, 195, 163); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr data-estado="resuelto" data-prioridad="baja">
+                            <td><strong class="text">NOV-3375</strong></td>
+                            <td>
+                                <div class="font-semibold text">Consulta sobre documentación</div>
+                                <div class="text-sm text-glass-muted">Manual de usuario</div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-success);">RESUELTO</span>
+                            </td>
+                            <td><span class="badge-modern badge-baja">BAJA</span></td>
+                            <td>08/11/2025<br><small class="text-glass-muted">11:00 AM</small></td>
+                            <td>Hace 7 días</td>
+                            <td>
+                                <div class="text-success font-bold">
+                                    <i class="bi bi-check-circle"></i> 18h 30m
+                                </div>
+                                <small class="text-xs text-glass-muted">Cumplido SLA</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3375" class="btn btn-sm btn-nova"
+                                    style="background: rgb(137, 165, 231); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr data-estado="clasificado" data-prioridad="media">
+                            <td><strong class="text">NOV-3370</strong></td>
+                            <td>
+                                <div class="font-semibold text">Solicitud de nuevo reporte</div>
+                                <div class="text-sm text-glass-muted">Dashboard personalizado</div>
+                            </td>
+                            <td><span class="badge-modern" style="background: var(--gradient-info);">CLASIFICADO</span>
+                            </td>
+                            <td><span class="badge-modern badge-media">MEDIA</span></td>
+                            <td>15/11/2025<br><small class="text-glass-muted">08:00 AM</small></td>
+                            <td>Hace 4 horas</td>
+                            <td>
+                                <div class="text-info font-bold">
+                                    <i class="bi bi-gear"></i> En revisión
+                                </div>
+                                <small class="text-xs text-glass-muted">Asignando técnico</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3370" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr data-estado="nuevo" data-prioridad="baja">
+                            <td><strong class="text">NOV-3365</strong></td>
+                            <td>
+                                <div class="font-semibold text">Pregunta sobre capacitación</div>
+                                <div class="text-sm text-glass-muted">Módulo administración</div>
+                            </td>
+                            <td><span class="badge-modern"
+                                    style="background: var(--gradient-warning); color: white;">NUEVO</span>
+                            </td>
+                            <td><span class="badge-modern badge-baja">BAJA</span></td>
+                            <td>15/11/2025<br><small class="text-glass-muted">07:30 AM</small></td>
+                            <td>Hace 5 horas</td>
+                            <td>
+                                <div class="text-warning font-bold">
+                                    <i class="bi bi-hourglass"></i> Pendiente
+                                </div>
+                                <small class="text-xs text-glass-muted">En cola</small>
+                            </td>
+                            <td>
+                                <a href="/cliente/detalle-ticket/NOV-3365" class="btn btn-sm btn-nova"
+                                    style="background: var(--gradient-info); color: white;">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <small class="text-xs text-glass-muted">Esperando su respuesta</small>
-            </td>
-            <td>
-                <a href="/cliente/detalle-ticket/NOV-3401" class="btn btn-sm btn-nova btn-nova-danger">
-                    <i class="bi bi-reply-fill"></i> RESPONDER
-                </a>
-            </td>
-            </tr>
 
-            <!-- Tickets En Proceso -->
-            <tr data-estado="proceso" data-prioridad="alta">
-                <td><strong class="text-white">NOV-3398</strong></td>
-                <td>
-                    <div class="font-semibold text-white">Consulta sobre API v3</div>
-                    <div class="text-sm text-glass-muted">Integración endpoints</div>
-                </td>
-                <td><span class="badge-modern badge-media">EN PROCESO</span></td>
-                <td><span class="badge-modern badge-alta">ALTA</span></td>
-                <td>14/11/2025<br><small class="text-glass-muted">16:00 PM</small></td>
-                <td>Ayer</td>
-                <td>
-                    <div class="text-success font-bold">
-                        <i class="bi bi-clock"></i> 2h 15m
+            <!-- Paginación -->
+            <div class="card-glass-body border-t border-white border-opacity-10">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-glass-muted">
+                        Mostrando <strong>1-8</strong> de <strong>28</strong> tickets
                     </div>
-                    <small class="text-xs text-glass-muted">Tiempo restante</small>
-                </td>
-                <td>
-                    <a href="/cliente/detalle-ticket/NOV-3398" class="btn btn-sm btn-nova"
-                        style="background: var(--gradient-info); color: white;">
-                        <i class="bi bi-eye"></i> Ver
-                    </a>
-                </td>
-            </tr>
-
-            <tr data-estado="proceso" data-prioridad="media">
-                <td><strong class="text-white">NOV-3390</strong></td>
-                <td>
-                    <div class="font-semibold text-white">Optimización de consultas BD</div>
-                    <div class="text-sm text-glass-muted">Performance lenta</div>
-                </td>
-                <td><span class="badge-modern badge-media">EN PROCESO</span></td>
-                <td><span class="badge-modern badge-media">MEDIA</span></td>
-                <td>13/11/2025<br><small class="text-glass-muted">10:00 AM</small></td>
-                <td>Hace 2 días</td>
-                <td>
-                    <div class="text-success font-bold">
-                        <i class="bi bi-clock"></i> 4h 30m
-                    </div>
-                    <small class="text-xs text-glass-muted">SLA OK</small>
-                </td>
-                <td>
-                    <a href="/cliente/detalle-ticket/NOV-3390" class="btn btn-sm btn-nova"
-                        style="background: var(--gradient-info); color: white;">
-                        <i class="bi bi-eye"></i> Ver
-                    </a>
-                </td>
-            </tr>
-
-            <!-- Tickets Resueltos -->
-            <tr data-estado="resuelto" data-prioridad="alta">
-                <td><strong class="text-white">NOV-3385</strong></td>
-                <td>
-                    <div class="font-semibold text-white">Error en login de usuarios</div>
-                    <div class="text-sm text-glass-muted">Autenticación fallida</div>
-                </td>
-                <td><span class="badge-modern" style="background: var(--gradient-success);">RESUELTO</span></td>
-                <td><span class="badge-modern badge-alta">ALTA</span></td>
-                <td>12/11/2025<br><small class="text-glass-muted">14:30 PM</small></td>
-                <td>Hace 3 días</td>
-                <td>
-                    <div class="text-success font-bold">
-                        <i class="bi bi-check-circle"></i> 3h 20m
-                    </div>
-                    <small class="text-xs text-glass-muted">Resuelto en tiempo</small>
-                </td>
-                <td>
-                    <a href="/cliente/detalle-ticket/NOV-3385" class="btn btn-sm btn-nova"
-                        style="background: rgba(255,255,255,0.1); color: white;">
-                        <i class="bi bi-eye"></i> Revisar
-                    </a>
-                </td>
-            </tr>
-
-            <i class="bi bi-check-circle-fill"></i> 6h 45m
-        </div>
-        <small class="text-xs text-glass-muted">Completado</small>
-        </td>
-        <td>
-            <a href="/cliente/detalle-ticket/NOV-3380" class="btn btn-sm btn-nova"
-                style="background: rgba(255,255,255,0.1); color: white;">
-                <i class="bi bi-eye"></i> Ver
-            </a>
-        </td>
-        </tr>
-
-        <tr data-estado="resuelto" data-prioridad="baja">
-            <td><strong class="text-white">NOV-3375</strong></td>
-            <td>
-                <div class="font-semibold text-white">Consulta sobre documentación</div>
-                <div class="text-sm text-glass-muted">Manual de usuario</div>
-            </td>
-            <td><span class="badge-modern" style="background: var(--gradient-success);">RESUELTO</span></td>
-            <td><span class="badge-modern badge-baja">BAJA</span></td>
-            <td>08/11/2025<br><small class="text-glass-muted">11:00 AM</small></td>
-            <td>Hace 7 días</td>
-            <td>
-                <div class="text-success font-bold">
-                    <i class="bi bi-check-circle"></i> 18h 30m
+                    <nav>
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#"
+                                    style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">Anterior</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#"
+                                    style="background: var(--gradient-primary); border: none; color: white;">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <small class="text-xs text-glass-muted">Cumplido SLA</small>
-            </td>
-            <td>
-                <a href="/cliente/detalle-ticket/NOV-3375" class="btn btn-sm btn-nova"
-                    style="background: rgba(255,255,255,0.1); color: white;">
-                    <i class="bi bi-eye"></i> Ver
-                </a>
-            </td>
-        </tr>
-
-        <tr data-estado="clasificado" data-prioridad="media">
-            <td><strong class="text-white">NOV-3370</strong></td>
-            <td>
-                <div class="font-semibold text-white">Solicitud de nuevo reporte</div>
-                <div class="text-sm text-glass-muted">Dashboard personalizado</div>
-            </td>
-            <td><span class="badge-modern" style="background: var(--gradient-info);">CLASIFICADO</span></td>
-            <td><span class="badge-modern badge-media">MEDIA</span></td>
-            <td>15/11/2025<br><small class="text-glass-muted">08:00 AM</small></td>
-            <td>Hace 4 horas</td>
-            <td>
-                <div class="text-info font-bold">
-                    <i class="bi bi-gear"></i> En revisión
-                </div>
-                <small class="text-xs text-glass-muted">Asignando técnico</small>
-            </td>
-            <td>
-                <a href="/cliente/detalle-ticket/NOV-3370" class="btn btn-sm btn-nova"
-                    style="background: var(--gradient-info); color: white;">
-                    <i class="bi bi-eye"></i> Ver
-                </a>
-            </td>
-        </tr>
-
-        <tr data-estado="nuevo" data-prioridad="baja">
-            <td><strong class="text-white">NOV-3365</strong></td>
-            <td>
-                <div class="font-semibold text-white">Pregunta sobre capacitación</div>
-                <div class="text-sm text-glass-muted">Módulo administración</div>
-            </td>
-            <td><span class="badge-modern" style="background: var(--gradient-warning); color: white;">NUEVO</span>
-            </td>
-            <td><span class="badge-modern badge-baja">BAJA</span></td>
-            <td>15/11/2025<br><small class="text-glass-muted">07:30 AM</small></td>
-            <td>Hace 5 horas</td>
-            <td>
-                <div class="text-warning font-bold">
-                    <i class="bi bi-hourglass"></i> Pendiente
-                </div>
-                <small class="text-xs text-glass-muted">En cola</small>
-            </td>
-            <td>
-                <a href="/cliente/detalle-ticket/NOV-3365" class="btn btn-sm btn-nova"
-                    style="background: var(--gradient-info); color: white;">
-                    <i class="bi bi-eye"></i> Ver
-                </a>
-            </td>
-        </tr>
-        </tbody>
-        </table>
-    </div>
-
-    <!-- Paginación -->
-    <div class="card-glass-body border-t border-white border-opacity-10">
-        <div class="flex justify-between items-center">
-            <div class="text-sm text-glass-muted">
-                Mostrando <strong>1-8</strong> de <strong>28</strong> tickets
             </div>
-            <nav>
-                <ul class="pagination mb-0">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#"
-                            style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">Anterior</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#"
-                            style="background: var(--gradient-primary); border: none; color: white;">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"
-                            style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"
-                            style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"
-                            style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"
-                            style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">Siguiente</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
-    </div>
-    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
