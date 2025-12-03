@@ -652,3 +652,17 @@ body::before {
         transform: rotate(360deg);
     }
 }
+
+/* Fix for select options visibility */
+.form-glass option {
+    background: rgba(0, 31, 63, 0.95);
+    color: white;
+    padding: 10px;
+}
+
+.form-glass select option:hover,
+.form-glass select option:focus,
+.form-glass select option:checked {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}

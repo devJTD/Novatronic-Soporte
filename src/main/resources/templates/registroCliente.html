@@ -82,32 +82,7 @@
                             </select>
                         </div>
 
-                        <!-- Módulo Afectado -->
-                        <div class="col-md-6">
-                            <label class="form-label-glass">Módulo Afectado <span class="text-danger">*</span></label>
-                            <select class="form-glass w-full" id="moduloAfectado" required>
-                                <option value="">Seleccione...</option>
-                                <option value="modulo-a">Módulo de Transacciones (A)</option>
-                                <option value="modulo-b">Módulo de Reportes (B)</option>
-                                <option value="modulo-c">Módulo de Administración (C)</option>
-                                <option value="otro">Otro / General</option>
-                            </select>
-                        </div>
 
-                        <!-- Req 4: Asignación de Prioridad -->
-                        <div class="col-md-12">
-                            <label class="form-label-glass">Nivel de Prioridad / Impacto <span class="text-danger">*</span></label>
-                            <select class="form-glass w-full" id="prioridad" required onchange="updatePriorityInfo()">
-                                <option value="">Seleccione el impacto...</option>
-                                <option value="critica">🔴 CRÍTICA - Servicio caído completamente (SLA: 1 hora)</option>
-                                <option value="alta">🟠 ALTA - Impacto severo en operaciones (SLA: 4 horas)</option>
-                                <option value="media">🟡 MEDIA - Problema menor / Workaround disponible (SLA: 8 horas)</option>
-                                <option value="baja">🟢 BAJA - Consulta / Mejora (SLA: 24 horas)</option>
-                            </select>
-                            <div id="priorityInfo" class="mt-2 p-3 rounded-lg" style="background: rgba(255,255,255,0.05); display: none;">
-                                <small class="text-glass"></small>
-                            </div>
-                        </div>
 
                         <!-- Descripción Detallada -->
                         <div class="col-12">
@@ -188,8 +163,6 @@
             
             const asunto = document.getElementById('asunto').value.trim();
             const tipo = document.getElementById('tipoSolicitud').value;
-            const modulo = document.getElementById('moduloAfectado').value;
-            const prioridad = document.getElementById('prioridad').value;
             const descripcion = document.getElementById('descripcion').value.trim();
             
             // Validaciones
@@ -198,7 +171,7 @@
                 return false;
             }
             
-            if (!tipo || !modulo || !prioridad) {
+            if (!tipo) {
                 alert('Por favor complete todos los campos obligatorios');
                 return false;
             }
